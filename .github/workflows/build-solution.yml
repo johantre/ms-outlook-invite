@@ -1,0 +1,52 @@
+name: Build and Release Solution
+run-name: Build and Release Solution - ${{ github.event.inputs.brand || 'default' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      brand:
+        description: 'Which brand to build?'
+        required: true
+        default: 'bmw'
+        type: choice
+        options:
+          - bmw
+          - fluvius
+          - volvo
+          - default
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Injection Script
+        run: |
+          python3 scripts/generate_solution.py ${{ github.event.inputs.brand }}
+          # Overwrite the original JSON with the updated one
+          mv solution/Workflows/ms-outlook-invite-DD6E021A-FDEE-F011-8406-00224885F6FF_updated.json solution/Workflows/ms-outlook-invite-DD6E021A-FDEE-F011-8406-00224885F6FF.json
+
+      - name: Create Solution Zip
+        run: |
+          cd solution
+          zip -r ../MSOutlookInvite_${{ github.event.inputs.brand }}.zip .
+
+      - name: Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          # Dynamically create a tag name like 'latest-bmw-build'
+          tag_name: latest-${{ github.event.inputs.brand || 'default' }}-build
+          # Optional: give the release a clear title
+          name: Latest ${{ github.event.inputs.brand || 'default' }} Solution Build
+          files: MSOutlookInvite_${{ github.event.inputs.brand || 'default' }}.zip
+          # Ensure it updates the existing release for that brand instead of failing
+          append_body: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

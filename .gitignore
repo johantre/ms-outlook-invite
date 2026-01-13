@@ -1,0 +1,22 @@
+# Screenshots
+/*.png
+
+# IDE
+.idea/
+
+# Claude Code
+.claude/
+
+# Solution zip (we keep the unzipped version)
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sensitive tokens
+**/token.txt
+**/token_expiry.txt
+**/refresh_token.txt
+**/*.env
+/old/
