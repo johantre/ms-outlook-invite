@@ -17,6 +17,9 @@ def generate_pa_body(template_path):
     # 2. Escape quotes for JSON
     html = html.replace('"', '\\"')
 
+    # 2b. Escape single quotes for Power Automate concat expression
+    html = html.replace("'", "''")
+
     # 3. Replace Jinja placeholders with Power Automate Concat parts
     # The quotes and commas are critical for the @concat expression
     html = html.replace('{{ ATTENDEES }}', "', body('Parse_JSON')?['attendees'], '")
