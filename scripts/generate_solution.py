@@ -14,10 +14,7 @@ def generate_pa_body(template_path):
     # 1. Minify: remove newlines and extra whitespaces
     html = re.sub(r'\s+', ' ', html).strip()
 
-    # 2. Escape quotes for JSON
-    html = html.replace('"', '\\"')
-
-    # 2b. Escape single quotes for Power Automate concat expression
+    # 2. Escape single quotes for Power Automate concat expression (json.dump handles double quotes)
     html = html.replace("'", "''")
 
     # 3. Replace Jinja placeholders with Power Automate Concat parts
