@@ -36,8 +36,8 @@ def update_solution_json(json_path, new_body):
         data = json.load(f)
 
     try:
-        # Targeting 'Create_event_(V3)' based on your provided JSON
-        data['properties']['definition']['actions']['Create_event_(V3)']['inputs']['parameters']['item/Body'] = new_body
+        # Targeting 'Create_event_(V4)' based on your provided JSON
+        data['properties']['definition']['actions']['Create_event_(V4)']['inputs']['parameters']['item/Body'] = new_body
 
         # Save to a NEW file for safety during testing
         output_path = json_path.replace(".json", "_updated.json")
