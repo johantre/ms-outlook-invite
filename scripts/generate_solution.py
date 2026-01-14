@@ -54,7 +54,7 @@ if __name__ == "__main__":
     brand = sys.argv[1] if len(sys.argv) > 1 else 'bmw'
 
     template_file = f"templates/mail/{brand}.html.j2"
-    workflow_file = "solution/Workflows/ms-outlook-invite-DD6E021A-FDEE-F011-8406-00224885F6FF.json"
+    workflow_file = "solution/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json"
 
     body_content = generate_pa_body(template_file)
     if body_content:
