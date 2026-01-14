@@ -2,8 +2,8 @@
   <Entities></Entities>
   <Roles></Roles>
   <Workflows>
-    <Workflow WorkflowId="{dd6e021a-fdee-f011-8406-00224885f6ff}" Name="ms-outlook-invite">
-      <JsonFileName>/Workflows/ms-outlook-invite-DD6E021A-FDEE-F011-8406-00224885F6FF.json</JsonFileName>
+    <Workflow WorkflowId="{6659800e-7ef1-f011-8406-00224885f6ff}" Name="ms-outlook-invite-office365-flow">
+      <JsonFileName>/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -25,7 +25,7 @@
       <ModernFlowType>0</ModernFlowType>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ms-outlook-invite" />
+        <LocalizedName languagecode="1033" description="ms-outlook-invite-office365-flow" />
       </LocalizedNames>
     </Workflow>
   </Workflows>
@@ -38,9 +38,9 @@
   <CustomControls />
   <EntityDataProviders />
   <connectionreferences>
-    <connectionreference connectionreferencelogicalname="jtrbv_sharedoutlook_76dc4">
-      <connectionreferencedisplayname>Outlook.com MSOutlookInvite-76dc4</connectionreferencedisplayname>
-      <connectorid>/providers/Microsoft.PowerApps/apis/shared_outlook</connectorid>
+    <connectionreference connectionreferencelogicalname="jtrbv_sharedoffice365_e66d0">
+      <connectionreferencedisplayname>Office 365 Outlook msoutlookinviteoffice365-e66d0</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid>
       <iscustomizable>1</iscustomizable>
       <promptingbehavior>0</promptingbehavior>
       <statecode>0</statecode>

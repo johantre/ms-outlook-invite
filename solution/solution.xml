@@ -1,11 +1,11 @@
 <ImportExportXml version="9.2.25114.188" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25114.188" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25114.00188">
   <SolutionManifest>
-    <UniqueName>MSOutlookInvite</UniqueName>
+    <UniqueName>msoutlookinviteoffice365</UniqueName>
     <LocalizedNames>
-      <LocalizedName description="MS-Outlook-Invite" languagecode="1033" />
+      <LocalizedName description="ms-outlook-invite-office365" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.1</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>johantrebv</UniqueName>
@@ -79,7 +79,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="29" id="{dd6e021a-fdee-f011-8406-00224885f6ff}" behavior="0" />
+      <RootComponent type="29" id="{6659800e-7ef1-f011-8406-00224885f6ff}" behavior="0" />
     </RootComponents>
     <MissingDependencies />
   </SolutionManifest>
