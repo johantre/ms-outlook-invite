@@ -1,0 +1,91 @@
+name: Build and Release Solution
+run-name: Build and Release - ${{ github.event_name == 'workflow_dispatch' && 'Manual All' || 'Dynamic Detection' }}
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual trigger to build everything
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Essential to compare commits for changes
+
+      - name: Determine brands to build
+        id: set-matrix
+        run: |
+          # 1. Get all available brands from the templates folder
+          ALL_BRANDS=$(ls templates/mail | sed 's/\.html//')
+          
+          # 2. Check if this is a manual trigger
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "Manual trigger detected. Building all brands."
+            UPDATED_BRANDS=()
+            for BRAND in $ALL_BRANDS; do
+              UPDATED_BRANDS+=("\"$BRAND\"")
+            done
+          else
+            # 3. Automated logic: Check for global changes (scripts or solution folder)
+            # Compares the current commit with the previous one
+            GLOBAL_CHANGES=$(git diff --name-only HEAD^ HEAD | grep -E '^(scripts/|solution/)' || true)
+          
+            UPDATED_BRANDS=()
+            for BRAND in $ALL_BRANDS; do
+              # 4. Check for brand-specific changes (HTML templates or images)
+              BRAND_CHANGES=$(git diff --name-only HEAD^ HEAD | grep -E "^(templates/mail/$BRAND.html|docs/images/$BRAND)" || true)
+          
+              # If global files changed OR brand-specific files changed, add to build list
+              if [ -n "$GLOBAL_CHANGES" ] || [ -n "$BRAND_CHANGES" ]; then
+                UPDATED_BRANDS+=("\"$BRAND\"")
+              fi
+            done
+          fi
+
+          # 5. Convert the bash array to a JSON array for the GitHub Actions matrix
+          JSON_ARRAY=$(IFS=,; echo "[${UPDATED_BRANDS[*]}]")
+          echo "matrix=$JSON_ARRAY" >> $GITHUB_OUTPUT
+
+  build:
+    needs: detect-changes
+    # Only run if there are brands identified for building
+    if: ${{ needs.detect-changes.outputs.matrix != '[]' && needs.detect-changes.outputs.matrix != '' }}
+    runs-on: ubuntu-latest
+    strategy:
+      # Maximize efficiency by running brand builds in parallel
+      matrix:
+        brand: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Injection Script
+        # Pass the current matrix brand to your python script
+        run: python3 scripts/generate_solution.py ${{ matrix.brand }}
+
+      - name: Create Solution Zip
+        run: |
+          cd solution
+          zip -r ../MSOutlookInvite_${{ matrix.brand }}.zip .
+
+      - name: Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          # Creates or updates a tag specific to each brand
+          tag_name: latest-${{ matrix.brand }}-build
+          name: Latest ${{ matrix.brand }} Solution Build
+          files: MSOutlookInvite_${{ matrix.brand }}.zip
+          append_body: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
