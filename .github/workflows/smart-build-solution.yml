@@ -1,4 +1,4 @@
-name: Smart Build and Release Solution
+name: Auto Build and Release Solution
 run-name: Build and Release - ${{ github.event_name == 'workflow_dispatch' && 'Manual All' || 'Dynamic Detection' }}
 
 on:
