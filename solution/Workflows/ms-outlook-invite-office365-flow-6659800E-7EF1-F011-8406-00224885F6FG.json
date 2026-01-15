@@ -1,0 +1,153 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "jtrbv_sharedoffice365_e66d0"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_new_email_arrives_(V3)": {
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "Id::AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgAuAAAAAAAn4YegcsK8RLGp4bF1LkdDAQBsrr_0WlPPS45_whAiEEykAAAAAGu6AAA=": "AUTO-INVITE",
+            "operationMetadataId": "f198961a-a89e-4ecb-b013-371dc1ae2818"
+          },
+          "type": "OpenApiConnectionNotification",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "OnNewEmailV3",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "folderPath": "Id::AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgAuAAAAAAAn4YegcsK8RLGp4bF1LkdDAQBsrr_0WlPPS45_whAiEEykAAAAAGu6AAA=",
+              "includeAttachments": false,
+              "subjectFilter": "[AUTO-INVITE]",
+              "importance": "Any",
+              "fetchOnlyWithAttachment": false
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "96b4d585-6289-4b79-bfd6-12573891a39a"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerOutputs()?['body/body']",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subject": {
+                  "type": "string"
+                },
+                "begin": {
+                  "type": "string"
+                },
+                "end": {
+                  "type": "string"
+                },
+                "attendees": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "subject",
+                "begin",
+                "end",
+                "attendees"
+              ]
+            }
+          }
+        },
+        "Create_event_(V4)": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "277673f5-4f4b-431b-be8b-5e43d370b62f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "V4CalendarPostItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "table": "AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgBGAAAAAAAn4YegcsK8RLGp4bF1LkdDBwBsrr_0WlPPS45_whAiEEykAAAAAAEGAABsrr_0WlPPS45_whAiEEykAAAAACiMAAA=",
+              "item/subject": "@body('Parse_JSON')['subject']",
+              "item/start": "@convertTimeZone(body('Parse_JSON')?['begin'], 'UTC', 'W. Europe Standard Time', 'yyyy-MM-ddTHH:mm:ss')",
+              "item/end": "@convertTimeZone(body('Parse_JSON')?['end'], 'UTC', 'W. Europe Standard Time', 'yyyy-MM-ddTHH:mm:ss')",
+              "item/timeZone": "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris",
+              "item/body": "<p>@{concat('<html><body><div style=\"padding:10px;background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;\"><b>Attendees:</b><br><code>', body('Parse_JSON')?['attendees'], '</code></div><hr>', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '</body></html>')}</p>",
+              "item/location": "@body('Parse_JSON')?['location']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_event_(V5)": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "277673f5-4f4b-431b-be8b-5e43d370b62f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "V4CalendarPostItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "table": "AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgBGAAAAAAAn4YegcsK8RLGp4bF1LkdDBwBsrr_0WlPPS45_whAiEEykAAAAAAEGAABsrr_0WlPPS45_whAiEEykAAAAACiMAAA=",
+              "item/subject": "@body('Parse_JSON')['subject']",
+              "item/start": "@convertTimeZone(body('Parse_JSON')?['begin'], 'UTC', 'W. Europe Standard Time', 'yyyy-MM-ddTHH:mm:ss')",
+              "item/end": "@convertTimeZone(body('Parse_JSON')?['end'], 'UTC', 'W. Europe Standard Time', 'yyyy-MM-ddTHH:mm:ss')",
+              "item/timeZone": "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris",
+              "item/body": "<p>@{concat('<html><body><div style=\"padding:10px;background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;\"><b>Attendees:</b><br><code>', body('Parse_JSON')?['attendees'], '</code></div><hr>', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '</body></html>')}</p>",
+              "item/location": "@body('Parse_JSON')?['location']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
