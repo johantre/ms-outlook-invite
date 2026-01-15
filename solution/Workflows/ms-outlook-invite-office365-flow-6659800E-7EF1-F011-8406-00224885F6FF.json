@@ -116,6 +116,34 @@
             },
             "authentication": "@parameters('$authentication')"
           }
+        },
+        "Create_event_(V5)": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "277673f5-4f4b-431b-be8b-5e43d370b62f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "V4CalendarPostItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "table": "AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgBGAAAAAAAn4YegcsK8RLGp4bF1LkdDBwBsrr_0WlPPS45_whAiEEykAAAAAAEGAABsrr_0WlPPS45_whAiEEykAAAAACiMAAA=",
+              "item/subject": "@body('Parse_JSON')['subject']",
+              "item/start": "@convertTimeZone(body('Parse_JSON')?['begin'], 'UTC', 'W. Europe Standard Time', 'yyyy-MM-ddTHH:mm:ss')",
+              "item/end": "@convertTimeZone(body('Parse_JSON')?['end'], 'UTC', 'W. Europe Standard Time', 'yyyy-MM-ddTHH:mm:ss')",
+              "item/timeZone": "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris",
+              "item/body": "<p>@{concat('<html><body><div style=\"padding:10px;background:#f6f8fa;border:1px solid #e1e4e8;border-radius:6px;\"><b>Attendees:</b><br><code>', body('Parse_JSON')?['attendees'], '</code></div><hr>', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '</body></html>')}</p>",
+              "item/location": "@body('Parse_JSON')?['location']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
         }
       }
     },
