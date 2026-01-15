@@ -1,4 +1,4 @@
-name: Build and Release Solution
+name: Manual Build and Release Solution
 run-name: Build and Release Solution - ${{ github.event.inputs.brand || 'default' }}
 
 on:
