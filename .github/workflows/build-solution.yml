@@ -30,8 +30,6 @@ jobs:
       - name: Run Injection Script
         run: |
           python3 scripts/generate_solution.py ${{ github.event.inputs.brand }}
-          # Overwrite the original JSON with the updated one
-          mv solution/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF_updated.json solution/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json
 
       - name: Create Solution Zip
         run: |

@@ -2,11 +2,12 @@ import json
 import re
 import sys
 import os
+from glob import glob
 
 def generate_pa_body(template_path):
     if not os.path.exists(template_path):
-        print(f"Error: Template not found at {template_path}")
-        return None
+        print(f"❌ Error: Template not found at {template_path}")
+        sys.exit(1)
 
     with open(template_path, 'r', encoding='utf-8') as f:
         html = f.read()
@@ -24,38 +25,66 @@ def generate_pa_body(template_path):
     html = html.replace('{{ DESCRIPTION }}', "', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '")
 
     # 4. Wrap the whole thing in the Power Automate concat function
-    full_body = f"<p class=\"editor-paragraph\">@{{concat('{html}')}}</p>"
-    return full_body
+    return f"<p class=\"editor-paragraph\">@{{concat('{html}')}}</p>"
 
-def update_solution_json(json_path, new_body):
-    if not os.path.exists(json_path):
-        print(f"Error: JSON not found at {json_path}")
-        return
+def find_single_workflow_json(workflows_dir):
+    files = glob(os.path.join(workflows_dir, "*.json"))
+
+    if len(files) == 0:
+        print(f"❌ Error: No workflow JSON found in {workflows_dir}")
+        sys.exit(1)
+
+    if len(files) > 1:
+        print(f"❌ Error: Multiple workflow JSON files found in {workflows_dir}:")
+        for f in files:
+            print(f"  - {f}")
+        sys.exit(1)
+
+    return files[0]
+
+def find_create_event_action(actions: dict):
+    matches = [k for k in actions.keys() if re.match(r'^Create_event_.*', k)]
+
+    if len(matches) == 0:
+        print("❌ Error: No action matching 'Create_event_*' found.")
+        print("Available actions:", actions.keys())
+        sys.exit(1)
+
+    if len(matches) > 1:
+        print("❌ Error: Multiple actions matching 'Create_event_*' found:")
+        for m in matches:
+            print(f"  - {m}")
+        sys.exit(1)
+
+    return matches[0]
+
+def update_solution_json(workflows_dir, new_body):
+    json_path = find_single_workflow_json(workflows_dir)
 
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    try:
-        # Targeting 'Create_event_(V4)' based on your provided JSON
-        data['properties']['definition']['actions']['Create_event_(V4)']['inputs']['parameters']['item/Body'] = new_body
+    actions = data['properties']['definition']['actions']
+    create_event_action = find_create_event_action(actions)
 
-        # Save to a NEW file for safety during testing
-        output_path = json_path.replace(".json", "_updated.json")
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2)
-        print(f"Success! Updated JSON saved to: {output_path}")
-    except KeyError as e:
-        print(f"Error: Could not find the path in JSON: {e}")
-        # Print keys at the failure level to help debugging if it fails again
-        print("Available actions in your JSON are:", data['properties']['definition']['actions'].keys())
+    actions[create_event_action]['inputs']['parameters']['item/Body'] = new_body
+
+    output_path = json_path.replace(".json", "_updated.json")
+
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2)
+
+    os.replace(output_path, json_path)
+
+    print(f"✅ Updated workflow '{os.path.basename(json_path)}'")
+    print(f"✅ Updated action: {create_event_action}")
 
 if __name__ == "__main__":
     # Get brand name from CLI argument, default to 'bmw'
     brand = sys.argv[1] if len(sys.argv) > 1 else 'bmw'
 
     template_file = f"templates/mail/{brand}.html.j2"
-    workflow_file = "solution/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json"
+    workflows_dir = "solution/Workflows"
 
     body_content = generate_pa_body(template_file)
-    if body_content:
-        update_solution_json(workflow_file, body_content)
+    update_solution_json(workflows_dir, body_content)
