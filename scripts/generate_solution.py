@@ -83,7 +83,7 @@ if __name__ == "__main__":
     # Get brand name from CLI argument, default to 'bmw'
     brand = sys.argv[1] if len(sys.argv) > 1 else 'bmw'
 
-    template_file = f"templates/mail/{brand}.html.j2"
+    template_file = f"templates/mail/{brand}.html"
     workflows_dir = "solution/Workflows"
 
     body_content = generate_pa_body(template_file)
