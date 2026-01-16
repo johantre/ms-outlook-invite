@@ -15,7 +15,7 @@ This project provides pre-built **Power Automate Solutions** that automatically:
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#f6f8fa','primaryTextColor':'#24292f','primaryBorderColor':'#d0d7de','lineColor':'#656d76','secondaryColor':'#f6f8fa','tertiaryColor':'#f6f8fa'}}}%%
 graph LR
-    JIRA["<b style='font-size:14px'><img src='assets/images/atlassian.png' width='25' height='25' /> Jira / Confluence / ...</b><br/><br/><div style='text-align:left;line-height:1.4'>• Send Email<br/>• Subject: [AUTO-INVITE]<br/>• Body: JSON payload</div>"]
+    JIRA["<img style="vertical-align: middle" src='assets/images/atlassian.png' width='10' height='10' /><b style='font-size:14px'>Jira / Confluence / ...</b><br/><br/><div style='text-align:left;line-height:1.4'>• Send Email<br/>• Subject: [AUTO-INVITE]<br/>• Body: JSON payload</div>"]
     
     OUTLOOK["<b style='font-size:14px'>📧 Microsoft Outlook</b><br/><br/><div style='text-align:left;line-height:1.4'>• Email arrives in Inbox<br/>• Rule: move to<br/>&nbsp;&nbsp;-'AUTO-INVITE' folder</div>"]
     
