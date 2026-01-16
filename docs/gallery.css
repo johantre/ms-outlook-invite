@@ -1,0 +1,53 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 2rem;
+  background: #fafafa;
+}
+
+.gallery {
+  max-width: 900px;
+  margin: auto;
+}
+
+.viewer {
+  position: relative;
+  text-align: center;
+}
+
+.viewer img {
+  max-width: 100%;
+  max-height: 70vh;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.nav.prev { left: 0; }
+.nav.next { right: 0; }
+
+.thumbs {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.thumbs img {
+  height: 60px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.thumbs img.active {
+  opacity: 1;
+  outline: 2px solid #0366d6;
+}

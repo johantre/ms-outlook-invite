@@ -78,7 +78,7 @@ Most corporate Licenses cover what's required, however. Following licenses meet 
 6. Wait for the import to complete
 7. Open the imported solution and **turn on** the flow
 
-📸 Screenshots [click to view](#powerautomate-screenshots)
+📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/pa.html)
 
 ### <img style="vertical-align: middle" src='assets/images/outlook.png' width='20' height='20' /> Step 3: Configure Outlook
 
@@ -99,7 +99,7 @@ Most corporate Licenses cover what's required, however. Following licenses meet 
     - **Action**: Move to folder `AUTO-INVITE`
 4. Click **Save**
 
-📸 Screenshots [click to view](#outlook-screenshots)
+📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/ol.html)
 
 ### <img style="vertical-align: middle" src='assets/images/atlassian.png' width='30' height='30' /> Step 4: Configure Your Trigger System
 
@@ -124,9 +124,9 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
 
 #### <img style="vertical-align: middle" src='assets/images/atlassian.png' width='30' height='30' /> Example: Jira Automation
 
-1. Go to **Project settings** > **Automation**
-2. Create a new rule with trigger: **When: Manually triggered**
-3. Add action: **Then: Send email**
+1. Go to **Project settings** > **Automation** or through the actions button (⚡) >  
+2. Create a new rule with trigger: **Manually triggered**
+3. Add action: **Send email**
 4. Configure email:
     - **To**: Your email address
     - **Subject**: `[AUTO-INVITE] {{issue.summary}}`
@@ -142,7 +142,7 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
    }
    ```
 
-📸 *[Screenshots available on request]*
+📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/at.html)
 
 ## 📝 JSON Payload Specification
 
@@ -328,15 +328,3 @@ Want to create a custom branded template or contribute to the project?
 ---
 
 **Made with ❤️ for efficiency and automation**
-
-## powerautomate-screenshots
-
-<p>
-<img style="vertical-align: middle" src='assets/screenshots/PA-1.png' width="100" alt="Power Automate 1"/><img style="vertical-align: middle" src='assets/screenshots/PA-2.png' width="100" alt="Power Automate 2"/><img style="vertical-align: middle" src='assets/screenshots/PA-3.png' width="100" alt="Power Automate 3"/><img style="vertical-align: middle" src='assets/screenshots/PA-4.png' width="100" alt="Power Automate 4"/><img style="vertical-align: middle" src='assets/screenshots/PA-5.png' width="100" alt="Power Automate 5"/><img style="vertical-align: middle" src='assets/screenshots/PA-6.png' width="100" alt="Power Automate 6"/><img style="vertical-align: middle" src='assets/screenshots/PA-7.png' width="100" alt="Power Automate 7"/>
-</p>
-
-## outlook-screenshots
-
-<p>
-<img style="vertical-align: middle" src='assets/screenshots/OL-1.png' width="100" alt="Outlook 1"/><img style="vertical-align: middle" src='assets/screenshots/OL-2.png' width="100" alt="Outlook 2"/><img style="vertical-align: middle" src='assets/screenshots/OL-3.png' width="100" alt="Outlook 3"/><img style="vertical-align: middle" src='assets/screenshots/OL-4.png' width="100" alt="Outlook 4"/><img style="vertical-align: middle" src='assets/screenshots/OL-5.png' width="100" alt="Outlook 5"/><img style="vertical-align: middle" src='assets/screenshots/OL-6.png' width="100" alt="Outlook 6"/>
-</p>
