@@ -78,15 +78,12 @@ Most corporate Licenses cover what's required, however. Following licenses meet 
 6. Wait for the import to complete
 7. Open the imported solution and **turn on** the flow
 
+📸 Screenshots [klik om te bekijken](#pa-screenshots)
+
+## pa-Screenshots
+
 <p>
-<summary>📸 Screenshots</summary>
-<img style="vertical-align: middle" src='assets/screenshots/PA-1.png' width="100" alt="Power Automate 1"/>
-<img style="vertical-align: middle" src='assets/screenshots/PA-2.png' width="100" alt="Power Automate 2"/>
-<img style="vertical-align: middle" src='assets/screenshots/PA-3.png' width="100" alt="Power Automate 3"/>
-<img style="vertical-align: middle" src='assets/screenshots/PA-4.png' width="100" alt="Power Automate 4"/>
-<img style="vertical-align: middle" src='assets/screenshots/PA-5.png' width="100" alt="Power Automate 5"/>
-<img style="vertical-align: middle" src='assets/screenshots/PA-6.png' width="100" alt="Power Automate 6"/>
-<img style="vertical-align: middle" src='assets/screenshots/PA-7.png' width="100" alt="Power Automate 7"/>
+<img style="vertical-align: middle" src='assets/screenshots/PA-1.png' width="100" alt="Power Automate 1"/><img style="vertical-align: middle" src='assets/screenshots/PA-2.png' width="100" alt="Power Automate 2"/><img style="vertical-align: middle" src='assets/screenshots/PA-3.png' width="100" alt="Power Automate 3"/><img style="vertical-align: middle" src='assets/screenshots/PA-4.png' width="100" alt="Power Automate 4"/><img style="vertical-align: middle" src='assets/screenshots/PA-5.png' width="100" alt="Power Automate 5"/><img style="vertical-align: middle" src='assets/screenshots/PA-6.png' width="100" alt="Power Automate 6"/><img style="vertical-align: middle" src='assets/screenshots/PA-7.png' width="100" alt="Power Automate 7"/>
 </p>
 
 ### <img style="vertical-align: middle" src='assets/images/outlook.png' width='20' height='20' /> Step 3: Configure Outlook
