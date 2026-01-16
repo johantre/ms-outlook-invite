@@ -13,27 +13,22 @@ This project provides pre-built **Power Automate Solutions** that automatically:
 ## 📊 Process Flow
 
 ```mermaid
-graph TD
-    A["🎯 Trigger System<br/>Jira, Confluence, etc."] -->|"Sends email with<br/>[AUTO-INVITE] + JSON"| B["📧 Email Arrives<br/>in Inbox"]
-    B -->|"Outlook Rule triggers"| C["📁 AUTO-INVITE Folder<br/>Email moved automatically"]
-    C -->|"Power Automate<br/>monitors folder"| D["⚡ Flow Triggered"]
-    D --> E["🔍 Parse JSON<br/>Extract data from email"]
-    E --> F["📝 Extract Fields<br/>• subject<br/>• description<br/>• attendees"]
-    F --> G["🎨 Generate HTML<br/>Apply branded template"]
-    G --> H["📅 Create Calendar Event<br/>Start: now<br/>Duration: 1 hour"]
-    H --> I["✅ Invite Created<br/>in Your Calendar"]
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#f6f8fa','primaryTextColor':'#24292f','primaryBorderColor':'#d0d7de','lineColor':'#656d76','secondaryColor':'#f6f8fa','tertiaryColor':'#f6f8fa'}}}%%
+graph LR
+    JIRA["<b style='font-size:14px'>🎯 Jira / Confluence / ...</b><br/><br/><div style='text-align:left;line-height:1.4'>• Send Email<br/>• Subject: [AUTO-INVITE]<br/>• Body: JSON payload</div>"]
     
-    I --> J["👤 Manual Steps Required"]
-    J --> K["📋 Copy Attendees<br/>from invite body"]
-    K --> L["🔍 Find Common<br/>Time Slots"]
-    L --> M["💬 Communicate Scope<br/>& Expectations"]
-    M --> N["📨 Send Actual Invite<br/>with agreed time"]
+    OUTLOOK["<b style='font-size:14px'>📧 Microsoft Outlook</b><br/><br/><div style='text-align:left;line-height:1.4'>• Email arrives in Inbox<br/>• Rule: move to<br/>&nbsp;&nbsp;-'AUTO-INVITE' folder</div>"]
     
-    style A fill:#e1f5ff,stroke:#0078d4,stroke-width:2px
-    style D fill:#fff4e1,stroke:#ff8c00,stroke-width:2px
-    style H fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
-    style J fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    style N fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    PA["<b style='font-size:14px'>⚡ Power Automate</b><br/><br/><div style='text-align:left;line-height:1.4'>• AUTO-INVITE folder<br/>• Parse JSON - extract data<br/>• Get fields<br/>&nbsp;&nbsp;- subject<br/>&nbsp;&nbsp;- description<br/>&nbsp;&nbsp;- attendees<br/>• Create HTML invite body<br/>&nbsp;&nbsp;- apply template<br/>• Create event<br/>&nbsp;&nbsp;- start: now<br/>&nbsp;&nbsp;- end: +1h</div>"]
+    
+    MANUAL["<b style='font-size:14px'>👤 Manual Actions Required</b><br/><br/><div style='text-align:left;line-height:1.4'>• Review invite in calendar<br/>• Copy/Paste attendees<br/>&nbsp;&nbsp;- from invite body<br/>• Find time slots<br/>&nbsp;&nbsp;- check calendars<br/>• Communicate attendees<br/>&nbsp;&nbsp;- scope<br/>&nbsp;&nbsp;- expectations<br/>• Send final invite</div>"]
+    
+    JIRA --> OUTLOOK --> PA --> MANUAL
+    
+    style JIRA fill:#f6f8fa,stroke:#d0d7de,stroke-width:2px,color:#24292f
+    style OUTLOOK fill:#f6f8fa,stroke:#d0d7de,stroke-width:2px,color:#24292f
+    style PA fill:#f6f8fa,stroke:#d0d7de,stroke-width:2px,color:#24292f
+    style MANUAL fill:#f6f8fa,stroke:#d0d7de,stroke-width:2px,color:#24292f
 ```
 
 ## 🎨 Available Templates
