@@ -1,0 +1,108 @@
+.
+├── assets
+│   ├── images
+│   │   ├── atlassian.png
+│   │   ├── github.png
+│   │   ├── outlook-calendar.png
+│   │   ├── outlook.com.png
+│   │   ├── outlook.png
+│   │   └── power-automate.png
+│   └── screenshots
+│       ├── AT-1.png
+│       ├── AT-2.png
+│       ├── AT-3.png
+│       ├── AT-4.png
+│       ├── AT-5.png
+│       ├── AT-6.png
+│       ├── OL-1.png
+│       ├── OL-2.png
+│       ├── OL-3.png
+│       ├── OL-4.png
+│       ├── OL-5.png
+│       ├── OL-6.png
+│       ├── PA-1.png
+│       ├── PA-2.png
+│       ├── PA-3.png
+│       ├── PA-4.png
+│       ├── PA-5.png
+│       ├── PA-6.png
+│       └── PA-7.png
+├── docs
+│   ├── at.html
+│   ├── gallery.css
+│   ├── gallery.js
+│   ├── images
+│   │   ├── bmw.png
+│   │   ├── fluvius.png
+│   │   └── volvo.png
+│   ├── ol.html
+│   └── pa.html
+├── old
+│   ├── 2026Jan16 - Atlassian Logos - 4 files.zip
+│   ├── atlassian.png
+│   ├── first-working-office365com-solution
+│   │   ├── [Content_Types].xml
+│   │   ├── customizations.xml
+│   │   ├── solution.xml
+│   │   └── Workflows
+│   │       └── ms-outlook-invite-DD6E021A-FDEE-F011-8406-00224885F6FF.json
+│   ├── github-mark-3af2cad1c4ca
+│   │   ├── GitHub Mark
+│   │   │   ├── PDF
+│   │   │   │   ├── GitHub_Invertocat_Black_Clearspace.pdf
+│   │   │   │   ├── GitHub_Invertocat_Black.pdf
+│   │   │   │   ├── GitHub_Invertocat_White_Clearspace.pdf
+│   │   │   │   └── GitHub_Invertocat_White.pdf
+│   │   │   ├── PNG
+│   │   │   │   ├── GitHub_Invertocat_Black_Clearspace.png
+│   │   │   │   ├── GitHub_Invertocat_Black.png
+│   │   │   │   ├── GitHub_Invertocat_White_Clearspace.png
+│   │   │   │   └── GitHub_Invertocat_White.png
+│   │   │   └── SVG
+│   │   │       ├── GitHub_Invertocat_Black_Clearspace.svg
+│   │   │       ├── GitHub_Invertocat_Black.svg
+│   │   │       ├── GitHub_Invertocat_White_Clearspace.svg
+│   │   │       └── GitHub_Invertocat_White.svg
+│   │   └── __MACOSX
+│   │       └── GitHub Mark
+│   │           ├── PDF
+│   │           ├── PNG
+│   │           └── SVG
+│   ├── github-mark-3af2cad1c4ca.zip
+│   ├── icons8-outlook-calendar-color.zip
+│   ├── microsoft-outlook-2025-vector-logo-seeklogo.zip
+│   ├── microsoft-outlook-vector-logo-seeklogo.zip
+│   ├── microsoft-power-automate-vector-logo-seeklogo.zip
+│   └── ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json
+├── README.md
+├── scripts
+│   └── generate_solution.py
+├── shell
+│   ├── multi-user
+│   │   ├── create-meeting.sh
+│   │   ├── get-token.sh
+│   │   ├── list-users.sh
+│   │   └── README.md
+│   ├── README.md
+│   └── single-user
+│       ├── create-meeting.sh
+│       ├── get-token.sh
+│       ├── README.md
+│       ├── refresh_token.txt
+│       ├── token_expiry.txt
+│       └── token.txt
+├── solution
+│   ├── [Content_Types].xml
+│   ├── customizations.xml
+│   ├── solution.xml
+│   └── Workflows
+│       └── ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json
+├── templates
+│   └── mail
+│       ├── bmw.html
+│       ├── default.html
+│       ├── fluvius.html
+│       └── volvo.html
+└── tree.txt
+
+27 directories, 79 files
