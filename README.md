@@ -14,20 +14,20 @@ This project provides pre-built **Power Automate Solutions** that automatically:
 
 ```mermaid
 graph TD
-    A[🎯 Trigger System<br/>Jira, Confluence, etc.] -->|Sends email with<br/>[AUTO-INVITE] + JSON| B[📧 Email Arrives<br/>in Inbox]
-    B -->|Outlook Rule triggers| C[📁 AUTO-INVITE Folder<br/>Email moved automatically]
-    C -->|Power Automate<br/>monitors folder| D[⚡ Flow Triggered]
-    D --> E[🔍 Parse JSON<br/>Extract data from email]
-    E --> F[📝 Extract Fields<br/>• subject<br/>• description<br/>• attendees]
-    F --> G[🎨 Generate HTML<br/>Apply branded template]
-    G --> H[📅 Create Calendar Event<br/>Start: now<br/>Duration: 1 hour]
-    H --> I[✅ Invite Created<br/>in Your Calendar]
+    A["🎯 Trigger System<br/>Jira, Confluence, etc."] -->|"Sends email with<br/>[AUTO-INVITE] + JSON"| B["📧 Email Arrives<br/>in Inbox"]
+    B -->|"Outlook Rule triggers"| C["📁 AUTO-INVITE Folder<br/>Email moved automatically"]
+    C -->|"Power Automate<br/>monitors folder"| D["⚡ Flow Triggered"]
+    D --> E["🔍 Parse JSON<br/>Extract data from email"]
+    E --> F["📝 Extract Fields<br/>• subject<br/>• description<br/>• attendees"]
+    F --> G["🎨 Generate HTML<br/>Apply branded template"]
+    G --> H["📅 Create Calendar Event<br/>Start: now<br/>Duration: 1 hour"]
+    H --> I["✅ Invite Created<br/>in Your Calendar"]
     
-    I --> J[👤 Manual Steps Required]
-    J --> K[📋 Copy Attendees<br/>from invite body]
-    K --> L[🔍 Find Common<br/>Time Slots]
-    L --> M[💬 Communicate Scope<br/>& Expectations]
-    M --> N[📨 Send Actual Invite<br/>with agreed time]
+    I --> J["👤 Manual Steps Required"]
+    J --> K["📋 Copy Attendees<br/>from invite body"]
+    K --> L["🔍 Find Common<br/>Time Slots"]
+    L --> M["💬 Communicate Scope<br/>& Expectations"]
+    M --> N["📨 Send Actual Invite<br/>with agreed time"]
     
     style A fill:#e1f5ff,stroke:#0078d4,stroke-width:2px
     style D fill:#fff4e1,stroke:#ff8c00,stroke-width:2px
