@@ -78,13 +78,7 @@ Most corporate Licenses cover what's required, however. Following licenses meet 
 6. Wait for the import to complete
 7. Open the imported solution and **turn on** the flow
 
-📸 Screenshots [klik om te bekijken](#pa-screenshots)
-
-## pa-Screenshots
-
-<p>
-<img style="vertical-align: middle" src='assets/screenshots/PA-1.png' width="100" alt="Power Automate 1"/><img style="vertical-align: middle" src='assets/screenshots/PA-2.png' width="100" alt="Power Automate 2"/><img style="vertical-align: middle" src='assets/screenshots/PA-3.png' width="100" alt="Power Automate 3"/><img style="vertical-align: middle" src='assets/screenshots/PA-4.png' width="100" alt="Power Automate 4"/><img style="vertical-align: middle" src='assets/screenshots/PA-5.png' width="100" alt="Power Automate 5"/><img style="vertical-align: middle" src='assets/screenshots/PA-6.png' width="100" alt="Power Automate 6"/><img style="vertical-align: middle" src='assets/screenshots/PA-7.png' width="100" alt="Power Automate 7"/>
-</p>
+📸 Screenshots [click to view](#powerautomate-screenshots)
 
 ### <img style="vertical-align: middle" src='assets/images/outlook.png' width='20' height='20' /> Step 3: Configure Outlook
 
@@ -105,7 +99,7 @@ Most corporate Licenses cover what's required, however. Following licenses meet 
     - **Action**: Move to folder `AUTO-INVITE`
 4. Click **Save**
 
-📸 *[Screenshots available on request]*
+📸 Screenshots [click to view](#outlook-screenshots)
 
 ### <img style="vertical-align: middle" src='assets/images/atlassian.png' width='30' height='30' /> Step 4: Configure Your Trigger System
 
@@ -334,3 +328,15 @@ Want to create a custom branded template or contribute to the project?
 ---
 
 **Made with ❤️ for efficiency and automation**
+
+## powerautomate-screenshots
+
+<p>
+<img style="vertical-align: middle" src='assets/screenshots/PA-1.png' width="100" alt="Power Automate 1"/><img style="vertical-align: middle" src='assets/screenshots/PA-2.png' width="100" alt="Power Automate 2"/><img style="vertical-align: middle" src='assets/screenshots/PA-3.png' width="100" alt="Power Automate 3"/><img style="vertical-align: middle" src='assets/screenshots/PA-4.png' width="100" alt="Power Automate 4"/><img style="vertical-align: middle" src='assets/screenshots/PA-5.png' width="100" alt="Power Automate 5"/><img style="vertical-align: middle" src='assets/screenshots/PA-6.png' width="100" alt="Power Automate 6"/><img style="vertical-align: middle" src='assets/screenshots/PA-7.png' width="100" alt="Power Automate 7"/>
+</p>
+
+## outlook-screenshots
+
+<p>
+<img style="vertical-align: middle" src='assets/screenshots/OL-1.png' width="100" alt="Outlook 1"/><img style="vertical-align: middle" src='assets/screenshots/OL-2.png' width="100" alt="Outlook 2"/><img style="vertical-align: middle" src='assets/screenshots/OL-3.png' width="100" alt="Outlook 3"/><img style="vertical-align: middle" src='assets/screenshots/OL-4.png' width="100" alt="Outlook 4"/><img style="vertical-align: middle" src='assets/screenshots/OL-5.png' width="100" alt="Outlook 5"/><img style="vertical-align: middle" src='assets/screenshots/OL-6.png' width="100" alt="Outlook 6"/>
+</p>
