@@ -15,7 +15,7 @@ This project provides pre-built **Power Automate Solutions** that automatically:
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#f6f8fa','primaryTextColor':'#24292f','primaryBorderColor':'#d0d7de','lineColor':'#656d76','secondaryColor':'#f6f8fa','tertiaryColor':'#f6f8fa'}}}%%
 graph LR
-    JIRA["<img style="vertical-align: middle" src='assets/images/atlassian.png' width='10' height='10' /><b style='font-size:14px'>Jira / Confluence / ...</b><br/><br/><div style='text-align:left;line-height:1.4'>• Send Email<br/>• Subject: [AUTO-INVITE]<br/>• Body: JSON payload</div>"]
+    JIRA["<b style='font-size:14px'>🎯 Jira / Confluence / ...</b><br/><br/><div style='text-align:left;line-height:1.4'>• Send Email<br/>• Subject: [AUTO-INVITE]<br/>• Body: JSON payload</div>"]
     
     OUTLOOK["<b style='font-size:14px'>📧 Microsoft Outlook</b><br/><br/><div style='text-align:left;line-height:1.4'>• Email arrives in Inbox<br/>• Rule: move to<br/>&nbsp;&nbsp;-'AUTO-INVITE' folder</div>"]
     
@@ -33,7 +33,7 @@ graph LR
 
 ## 🎨 Available Templates
 
-Choose from pre-built branded templates on the [Releases page](../../releases):
+At the moment of writing, you can choose from pre-built branded templates on the [Releases page](../../releases):
 
 - **BMW** - `MSOutlookInvite_bmw.zip`
 - **Fluvius** - `MSOutlookInvite_fluvius.zip`
@@ -45,11 +45,15 @@ Each release is tagged as `latest-{brand}-build` for easy identification.
 ## 📋 Prerequisites
 
 ### Required Microsoft Licenses
-To use this Power Automate Solution, you need one of the following:
+To use this Power Automate Solution, you need a MS account with:
+- **Exchange enabled (having a mailbox)**
+- **Power Automate permission**
+
+Most corporate Licenses cover what's required, however. Following licenses meet the checklist.
 - **Microsoft 365 Business Premium**
 - **Microsoft 365 E3 or E5**
-- **Power Automate per user plan**
 - **Office 365 E3 or E5** (with Power Automate included)
+- **Power Automate per user plan**
 
 ### Required Permissions
 - Access to Power Automate environment
@@ -58,31 +62,31 @@ To use this Power Automate Solution, you need one of the following:
 
 ## 🚀 Setup Guide
 
-### Step 1: Download Your Template
+### <img style="vertical-align: middle" src='assets/images/github.png' width='25' height='25' /> Step 1: Download Your Template
 
 1. Go to the [Releases page](../../releases)
 2. Download the ZIP file for your desired template (e.g., `MSOutlookInvite_bmw.zip`)
 3. Save it to a location you can access
 
-### Step 2: Import the Power Automate Solution
+### <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Step 2: Import the Power Automate Solution
 
 1. Navigate to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** in the left sidebar
 3. Click **Import solution**
 4. Click **Browse** and select your downloaded ZIP file
-5. Click **Next**, then **Import**
+5. Click **Next**, select *your* connector then **Import**
 6. Wait for the import to complete
 7. Open the imported solution and **turn on** the flow
 
 📸 *[Screenshots available on request]*
 
-### Step 3: Configure Outlook
+### <img style="vertical-align: middle" src='assets/images/outlook.png' width='20' height='20' /> Step 3: Configure Outlook
 
 #### Create the AUTO-INVITE Folder
 
 1. Open **Outlook** (web or desktop)
-2. Right-click on your **Inbox**
-3. Select **Create new subfolder**
+2. Right-click on **your account name** that contains Inbox, Drafts, Sent Items ... 
+3. Select **Create new folder**
 4. Name it: `AUTO-INVITE`
 
 #### Create an Outlook Rule
@@ -97,7 +101,7 @@ To use this Power Automate Solution, you need one of the following:
 
 📸 *[Screenshots available on request]*
 
-### Step 4: Configure Your Trigger System
+### <img style="vertical-align: middle" src='assets/images/atlassian.png' width='30' height='30' /> Step 4: Configure Your Trigger System
 
 Set up your external system (Jira, Confluence, custom app, etc.) to send emails with the following format:
 
@@ -107,18 +111,22 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
 
 **Body** (JSON):
 ```json
-{
+  {
    "subject": "Sprint Planning Q1 2026",
-   "description": "Discuss upcoming sprint goals and resource allocation",
-   "attendees": "john.doe@company.com; jane.smith@company.com; team@company.com"
+   "begin": "12:00",
+   "end": "13:00",
+   "attendees": "john.doe@company.com, jane.smith@company.com; team@company.com",
+   "location": "Ball room",
+   "description": "We need to get moving!"
 }
+
 ```
 
-#### Example: Jira Automation
+#### <img style="vertical-align: middle" src='assets/images/atlassian.png' width='30' height='30' /> Example: Jira Automation
 
 1. Go to **Project settings** > **Automation**
-2. Create a new rule with trigger: **Issue transitioned**
-3. Add action: **Send email**
+2. Create a new rule with trigger: **When: Manually triggered**
+3. Add action: **Then: Send email**
 4. Configure email:
     - **To**: Your email address
     - **Subject**: `[AUTO-INVITE] {{issue.summary}}`
@@ -126,8 +134,11 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
    ```json
    {
      "subject": "{{issue.summary}}",
-     "description": "{{issue.description}}",
-     "attendees": "{{issue.customfield_10001}}"
+     "begin": "{{now()}}",
+     "end": "{{now().plusMinutes(60)}}",
+     "attendees": "{{issue.Involved People.emailAddress}}",
+     "location": "Ball room",
+     "description": "{{issue.description.jsonEncode}}"
    }
    ```
 
@@ -165,10 +176,10 @@ After the automation creates the calendar invite, you must:
 The automation intentionally **does not** send calendar invites to attendees automatically. This gives you time to:
 - Review the meeting details
 - Find suitable time slots for all participants
-- Add context and expectations
+- Add context and expectations to participants
 - Avoid premature calendar notifications
 
-## 🛠️ How It Works
+## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> How Power Automate Works
 
 ### Workflow Components
 
@@ -203,8 +214,8 @@ The `generate_solution.py` script:
 Want to create a custom branded template or contribute to the project?
 
 👉 See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed instructions on:
-- Creating custom HTML templates
-- Adding your own brand
+- Creating custom HTML templates (copy-paste an existing template)
+- Adding your own brand text, image, style
 - Testing and building solutions
 - Submitting pull requests
 
@@ -226,10 +237,10 @@ Want to create a custom branded template or contribute to the project?
 - Risk of forgetting important details or people
 
 **Solution**:
-1. Jira automation sends formatted email on ticket transition
+1. Jira automation sends formatted email based on ticket details 
 2. Power Automate creates calendar placeholder instantly
 3. You review, find time slot, and send actual invite
-4. Time saved: **5-10 minutes per meeting**
+4. Time saved: **5-10 minutes per meeting invite**
 
 ## 🔧 Troubleshooting
 
@@ -254,14 +265,26 @@ Want to create a custom branded template or contribute to the project?
 - Ensure email addresses are valid
 - No spaces before/after semicolons
 
+### Testing & debugging 
+#### Testing w/o external automation
+- Sending mail manually to user to trigger Power Automate workflow
+#### Logging
+- Power Automate has logging at workflow level
+- Atlassian automations have logging as well
+#### Speed automation
+- Atlassian automations are usually instant
+- Receiving mail is usually instant
+- Power Automate takes a few seconds, not 5 minutes
+
 ## 📁 Project Structure
 
 ```
 .
 ├── .github/workflows/       # CI/CD automation
-│   ├── build-solution.yml   # Manual build workflow
+│   ├── build-solution.yml   # Manual build workflow (on push)
 │   └── smart-build-solution.yml  # Automated build workflow
-├── docs/images/             # Brand logos
+├── assets/images/           # Tool logos
+├── docs/images/             # Brand images
 ├── scripts/                 # Build scripts
 │   └── generate_solution.py # Template injection script
 ├── solution/                # Base Power Automate solution
@@ -274,12 +297,11 @@ Want to create a custom branded template or contribute to the project?
 └── shell/                   # Testing utilities
 ```
 
-## 🐛 Known Limitations
+## ⛓️ Known Limitations
 
 - Requires manual time slot coordination
-- Only supports Outlook/Exchange Online
-- JSON must be in email body (attachments not supported)
-- No support for recurring meetings
+- Power Automate only supports Outlook/Exchange
+- JSON must be in email body (no html mail, attachments not supported)
 - Maximum 1-hour default meeting duration
 
 ## 📜 License
@@ -294,11 +316,14 @@ Want to create a custom branded template or contribute to the project?
 
 ## 🚀 Roadmap
 
-- [ ] Support for recurring meetings
-- [ ] Configurable meeting duration
-- [ ] Teams meeting link generation
-- [ ] Multi-language template support
-- [ ] Attachment handling
+### Incoming JSON (Atlassian automation)
+- [ ] Meeting duration is redundant (always 1h), JSON mail payload could be simpler
+- [ ] JSON payload in mail could be enriched with URL of ticket
+  - Moreover, dynamically get link with Backlog view (Backlog id in URL) of that ticket, <br>as it gives more context, e.g. all stories in Epic, work done, ...  
+
+### Power Automate 
+- [ ] Teams meeting iso Outlook invite: Teams link & also added to Outlook Calendar
+- [ ] Differ color in Outlook Calendar based on Backlog id 
 
 ---
 
