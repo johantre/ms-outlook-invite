@@ -250,6 +250,7 @@ Want to create a custom branded template or contribute to the project?
 - Check that the email reached the AUTO-INVITE folder
 - Ensure the flow is **turned on** in Power Automate
 - Check flow run history for error messages
+- Each folder has an internal id. Renaming, removing the original `[AUTO-INVITE]` folder and re-creating a new `[AUTO-INVITE]` folder will result in automation fail, as in automation is referring to the old folder id.  
 
 ### Invalid JSON Error
 - Validate your JSON using [jsonlint.com](https://jsonlint.com)
