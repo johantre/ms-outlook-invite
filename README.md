@@ -187,7 +187,7 @@ The automation intentionally **does not** send calendar invites to attendees aut
 1. **Trigger**: New email in AUTO-INVITE folder with `[AUTO-INVITE]` in subject
 2. **Parse JSON**: Extracts `subject`, `description`, and `attendees` from email body
 3. **Generate HTML**: Injects data into the branded HTML template
-4. **Create Event**: Creates Outlook calendar event with formatted body
+4. **Create Event**: Creates Outlook calendar event with above formatted HTML body 
 
 ### Python Build Script
 
