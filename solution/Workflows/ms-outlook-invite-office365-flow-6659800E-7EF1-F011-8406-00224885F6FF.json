@@ -39,7 +39,7 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
             },
             "parameters": {
-              "folderPath": "Id::AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgAuAAAAAAAn4YegcsK8RLGp4bF1LkdDAQBsrr_0WlPPS45_whAiEEykAAAAAGu6AAA=",
+              "folderPath": "Id::AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgAuAAAAAAAn4YegcsK8RLGp4bF1LkdDAQBsrr_0WlPPS45_whAiEEykAAAAAGyTAAA=",
               "includeAttachments": false,
               "subjectFilter": "[AUTO-INVITE]",
               "importance": "Any",
