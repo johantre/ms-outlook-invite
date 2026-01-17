@@ -67,7 +67,7 @@ def update_solution_json(workflows_dir, new_body):
     actions = data['properties']['definition']['actions']
     create_event_action = find_create_event_action(actions)
 
-    actions[create_event_action]['inputs']['parameters']['item/Body'] = new_body
+    actions[create_event_action]['inputs']['parameters']['item/body'] = new_body
 
     output_path = json_path.replace(".json", "_updated.json")
 
