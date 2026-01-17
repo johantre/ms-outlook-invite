@@ -242,15 +242,18 @@ Want to create a custom branded template or contribute to the project?
 3. You review, find time slot, and send actual invite
 4. Time saved: **5-10 minutes per meeting invite**
 
-<details>
 ## 🔧 Troubleshooting
+
+<details>
 
 ### Flow Not Triggering
 - Verify the email subject contains `[AUTO-INVITE]`
 - Check that the email reached the AUTO-INVITE folder
 - Ensure the flow is **turned on** in Power Automate
 - Check flow run history for error messages
-- Each folder has an internal id. Renaming, removing the original `[AUTO-INVITE]` folder and re-creating a new `[AUTO-INVITE]` folder will result in automation fail, as in automation is referring to the old folder id.  
+- Each folder has an internal id. Renaming, removing the original `[AUTO-INVITE]` folder and re-creating a new `[AUTO-INVITE]` folder will result in automation fail, as in automation is referring to the old folder id. This id is to be found in [Workflow footprint](solution/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json) at the paths:   
+  - triggers > action name > metadata > Id:
+  - triggers > action name > inputs > parameters > folderPath:
 
 ### Invalid JSON Error
 - Validate your JSON using [jsonlint.com](https://jsonlint.com)
