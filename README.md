@@ -242,6 +242,7 @@ Want to create a custom branded template or contribute to the project?
 3. You review, find time slot, and send actual invite
 4. Time saved: **5-10 minutes per meeting invite**
 
+<details>
 ## 🔧 Troubleshooting
 
 ### Flow Not Triggering
@@ -276,33 +277,13 @@ Want to create a custom branded template or contribute to the project?
 - Receiving mail is usually instant
 - Power Automate takes a few seconds, not 5 minutes
 
-## 📁 Project Structure
-
-```
-.
-├── .github/workflows/       # CI/CD automation
-│   ├── build-solution.yml   # Manual build workflow (on push)
-│   └── smart-build-solution.yml  # Automated build workflow
-├── assets/images/           # Tool logos
-├── docs/images/             # Brand images
-├── scripts/                 # Build scripts
-│   └── generate_solution.py # Template injection script
-├── solution/                # Base Power Automate solution
-│   └── Workflows/           # Flow definition JSON
-├── templates/mail/          # HTML email templates
-│   ├── bmw.html
-│   ├── fluvius.html
-│   ├── volvo.html
-│   └── default.html
-└── shell/                   # Testing utilities
-```
-
 ## ⛓️ Known Limitations
 
 - Requires manual time slot coordination
 - Power Automate only supports Outlook/Exchange
 - JSON must be in email body (no html mail, attachments not supported)
 - Maximum 1-hour default meeting duration
+</details>
 
 ## 📜 License
 
