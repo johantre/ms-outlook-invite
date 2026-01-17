@@ -141,23 +141,24 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
      "description": "{{issue.description.jsonEncode}}"
    }
    ```
-
-📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/at.html)
-
-## 📝 JSON Payload Specification
+#### JSON Payload Specification
 
 The email body must contain valid JSON with the following fields:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `subject` | String | Yes | Meeting title |
-| `description` | String | Yes | Meeting description/agenda |
-| `attendees` | String | Yes | Semicolon-separated email addresses |
+| Field         | Type | Required | Description                         |
+|---------------|------|----------|-------------------------------------|
+| `subject`     | String | Yes | Meeting title                       |
+| `begin`       | String | Yes | Meeting start time                  |
+| `end`         | String | Yes | Meeting end time                    |
+| `description` | String | Yes | Meeting description/agenda          |
+| `attendees`   | String | Yes | Semicolon-separated email addresses |
 
 **Notes:**
 - Start time is automatically set to **now()** (current time)
 - End time is automatically set to **1 hour after start**
 - Attendees are included in the invite body but **not** as actual invitees (see Manual Steps)
+
+📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/at.html)
 
 ## ⚠️ Important: Manual Steps Required
 
@@ -165,7 +166,7 @@ After the automation creates the calendar invite, you must:
 
 1. **Copy the attendees list** from the invite body
 2. **Find a common time slot** in all attendees' calendars
-3. **Create a new meeting request** with:
+3. **Send your meeting invite** with:
     - The agreed-upon time slot
     - The copied attendees list
     - Meeting scope and expectations
@@ -211,6 +212,7 @@ The `generate_solution.py` script:
 
 ## 🎨 Creating Your Own Template
 
+<details>
 Want to create a custom branded template or contribute to the project?
 
 👉 See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed instructions on:
@@ -218,9 +220,11 @@ Want to create a custom branded template or contribute to the project?
 - Adding your own brand text, image, style
 - Testing and building solutions
 - Submitting pull requests
+</details>
 
 ## 🤝 Use Cases
 
+<details>
 ### Perfect For:
 - **Jira Integration**: Auto-create meeting placeholders from tickets
 - **Confluence**: Meeting requests from page updates
@@ -241,6 +245,7 @@ Want to create a custom branded template or contribute to the project?
 2. Power Automate creates calendar placeholder instantly
 3. You review, find time slot, and send actual invite
 4. Time saved: **5-10 minutes per meeting invite**
+</details>
 
 ## 🔧 Troubleshooting
 
