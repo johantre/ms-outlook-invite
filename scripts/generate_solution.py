@@ -88,3 +88,4 @@ if __name__ == "__main__":
 
     body_content = generate_pa_body(template_file)
     update_solution_json(workflows_dir, body_content)
+
