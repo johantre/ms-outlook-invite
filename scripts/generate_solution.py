@@ -23,6 +23,7 @@ def generate_pa_body(template_path):
     html = html.replace('{{ ATTENDEES }}', "', body('Parse_JSON')?['attendees'], '")
     html = html.replace('{{ SUMMARY }}', "', body('Parse_JSON')?['subject'], '")
     html = html.replace('{{ DESCRIPTION }}', "', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '")
+    html = html.replace('{{ URL }}', "', concat({body('Parse_JSON')?['host']}, '/jira/software/c/projects/', {body('Parse_JSON')?['projectKey']}, '/boards/', {variables('foundBoardId')}, '/backlog?epics=visible&issueParent=', {body('Parse_JSON')?['issueId']}, '&selectedIssue=', {body('Parse_JSON')?['issueKey']}), '")
 
     # 4. Wrap the whole thing in the Power Automate concat function
     return f"<p class=\"editor-paragraph\">@{{concat('{html}')}}</p>"
