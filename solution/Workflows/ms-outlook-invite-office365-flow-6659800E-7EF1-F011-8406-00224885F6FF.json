@@ -99,7 +99,7 @@
         },
         "Create_event_(V4)": {
           "runAfter": {
-            "Apply_to_each": [
+            "boardIds_do_not_contain_','": [
               "Succeeded"
             ]
           },
@@ -114,7 +114,7 @@
               "item/start": "@utcNow()",
               "item/end": "@addHours(utcNow(), 1)",
               "item/timeZone": "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris",
-              "item/body": "<p class=\"editor-paragraph\">@{concat('<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>New Meeting Event</title> </head> <body style=\"margin: 0; padding: 0; background-color: #ffffff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, Helvetica, sans-serif;\"> <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse: collapse; background-color: #ffffff;\"> <tr> <td align=\"center\" style=\"padding: 0;\"> <table width=\"650\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width: 650px; border-collapse: collapse; background-color: #ffffff;\"> <tr> <td background=\"https://johantre.github.io/ms-outlook-invite/images/volvo.png\" bgcolor=\"#ffffff\" width=\"650\" height=\"255\" valign=\"top\" style=\"background-repeat: no-repeat; background-position: top center; background-size: contain; padding: 20px 22px 0px 22px;\"> <div> <h1 style=\"margin: 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 22pt; font-weight: bold; color: white;\"> New Meeting Event </h1> </div> </td> </tr> <tr> <td style=\"padding: 10px 22px 15px 22px;\"> <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse: collapse; background-color: #f6f8fa; border: 1px solid #e1e4e8;\"> <tr> <td style=\"padding: 10px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;\"> <strong style=\"font-size: 10pt;\">Attendees: </strong><br> <code style=\"font-family: ''Courier New'', Courier, monospace;\">', body('Parse_JSON')?['attendees'], '</code> </td> </tr> </table> </td> </tr> <tr> <td align=\"center\" style=\"padding: 10px 22px 20px 22px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000; text-align: center;\"> <p style=\"margin: 0 0 10px 0; line-height: 1.4;\">Dear Attendees,</p> <p style=\"margin: 0 0 10px 0; line-height: 1.4;\">You are invited to this meeting.</p> <p style=\"margin: 0 0 10px 0; line-height: 1.4;\"><strong>Expectations for this event: Your good mood.</strong></p> <p style=\"margin: 0; line-height: 1.4;\">Regards, your servant leader</p> </td> </tr> <tr> <td style=\"padding: 15px 22px 40px 22px;\"> <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse: collapse; border-top: 1px solid #e1e4e8;\"> <tr> <td style=\"padding-top: 15px; font-family: Arial, sans-serif;\"> <h3 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;\"> Summary </h3> <div style=\"text-align: center; padding-bottom: 20px;\"> <p style=\"margin: 0; font-size: 10pt; color: #000000;\">', body('Parse_JSON')?['subject'], '</p> </div> <h3 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;\"> Description </h3> <div style=\"text-align: center;\"> <p style=\"margin: 0; font-size: 10pt; color: #000000;\">', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '</p> </div> </td> </tr> </table> </td> </tr> <tr> <td bgcolor=\"#a8c4bb\" style=\"padding: 25px 22px; background-color: #a8c4bb;\"> <h2 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 18pt; font-weight: bold; color: #bc373a;\"> STAY TUNED </h2> <h2 style=\"margin: 0 0 15px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 20pt; font-weight: bold; color: #000000;\"> VOLVO CARS IT. </h2> <p style=\"margin: 0; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;\">Do you have questions? Contact us on <a href=\"mailto:ict.helpdesk@volvo.com\" style=\"color: #0066B1; text-decoration: underline;\">ict.helpdesk@volvo.com</a> or +32-9-000-0000.</p> </td> </tr> </table> </td> </tr> </table> </body> </html>')}</p>",
+              "item/body": "<p class=\"editor-paragraph\">@{concat('<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>New Meeting Event</title> </head> <body style=\"margin: 0; padding: 0; background-color: #ffffff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, Helvetica, sans-serif;\"> <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse: collapse; background-color: #ffffff;\"> <tr> <td align=\"center\" style=\"padding: 0;\"> <table width=\"650\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width: 650px; border-collapse: collapse; background-color: #ffffff;\"> <tr> <td background=\"https://johantre.github.io/ms-outlook-invite/images/volvo.png\" bgcolor=\"#ffffff\" width=\"650\" height=\"255\" valign=\"top\" style=\"background-repeat: no-repeat; background-position: top center; background-size: contain; padding: 20px 22px 0px 22px;\"> <div> <h1 style=\"margin: 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 22pt; font-weight: bold; color: white;\"> New Meeting Event </h1> </div> </td> </tr> <tr> <td style=\"padding: 10px 22px 15px 22px;\"> <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse: collapse; background-color: #f6f8fa; border: 1px solid #e1e4e8;\"> <tr> <td style=\"padding: 10px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;\"> <strong style=\"font-size: 10pt;\">Attendees: </strong><br> <code style=\"font-family: ''Courier New'', Courier, monospace;\">', body('Parse_JSON')?['attendees'], '</code> </td> </tr> </table> </td> </tr> <tr> <td align=\"center\" style=\"padding: 10px 22px 20px 22px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000; text-align: center;\"> <p style=\"margin: 0 0 10px 0; line-height: 1.4;\">Dear Attendees,</p> <p style=\"margin: 0 0 10px 0; line-height: 1.4;\">You are invited to this meeting.</p> <p style=\"margin: 0 0 10px 0; line-height: 1.4;\"><strong>Expectations for this event: Your good mood.</strong></p> <p style=\"margin: 0; line-height: 1.4;\">Regards, your servant leader</p> </td> </tr> <tr> <td style=\"padding: 15px 22px 40px 22px;\"> <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse: collapse; border-top: 1px solid #e1e4e8;\"> <tr> <td style=\"padding-top: 15px; font-family: Arial, sans-serif;\"> <h3 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;\"> Summary </h3> <div style=\"text-align: center; padding-bottom: 20px;\"> <p style=\"margin: 0; font-size: 10pt; color: #000000;\">', body('Parse_JSON')?['subject'], '</p> </div> <h3 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;\"> Description </h3> <div style=\"text-align: center;\"> <p style=\"margin: 0; font-size: 10pt; color: #000000;\">', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '</p> </div> <h3 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;\"> URL </h3> <div style=\"text-align: center;\"> <p style=\"margin: 0; font-size: 10pt; color: #000000;\"><a href=', variables('boardURL'),'>URL pre-selected Backlog</a></p> </div> </td> </tr> </table> </td> </tr> <tr> <td bgcolor=\"#a8c4bb\" style=\"padding: 25px 22px; background-color: #a8c4bb;\"> <h2 style=\"margin: 0 0 5px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 18pt; font-weight: bold; color: #bc373a;\"> STAY TUNED </h2> <h2 style=\"margin: 0 0 15px 0; font-family: ''Arial Narrow'', Arial, sans-serif; font-size: 20pt; font-weight: bold; color: #000000;\"> VOLVO CARS IT. </h2> <p style=\"margin: 0; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;\">Do you have questions? Contact us on <a href=\"mailto:ict.helpdesk@volvo.com\" style=\"color: #0066B1; text-decoration: underline;\">ict.helpdesk@volvo.com</a> or +32-9-000-0000.</p> </td> </tr> </table> </td> </tr> </table> </body> </html>')}</p>",
               "item/location": "@{body('Parse_JSON')?['location']} "
             },
             "host": {
@@ -124,27 +124,131 @@
             }
           }
         },
-        "Compose_-_Split_boardNames": {
+        "boardIds_do_not_contain_','": {
+          "actions": {
+            "boardURL_TeamMgt": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "boardURL",
+                "value": "@concat(body('Parse_JSON')?['host'], '/jira/software/projects/', body('Parse_JSON')?['projectKey'], '/boards/', body('Parse_JSON')?['boardIds'], '/backlog?epics=visible&jql=parent%20%3D%20', body('Parse_JSON')?['issueKey'], '&selectedIssue=', body('Parse_JSON')?['issueKey'])"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_index": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Apply_to_each": {
+                "foreach": "@outputs('Split_boardNames')",
+                "actions": {
+                  "Condition": {
+                    "actions": {
+                      "Set_foundBoardId": {
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "foundBoardId",
+                          "value": "@outputs('Split_boardIds')[variables('index')]"
+                        }
+                      }
+                    },
+                    "else": {
+                      "actions": {}
+                    },
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@items('Apply_to_each')",
+                            "@body('Parse_JSON')?['boardName']"
+                          ]
+                        }
+                      ]
+                    },
+                    "type": "If"
+                  },
+                  "Increment_variable": {
+                    "runAfter": {
+                      "Condition": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "IncrementVariable",
+                    "inputs": {
+                      "name": "index",
+                      "value": 1
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Split_boardIds": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "Foreach"
+              },
+              "boardURL_EntMgt": {
+                "runAfter": {
+                  "Apply_to_each": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "boardURL",
+                  "value": "@concat(body('Parse_JSON')?['host'], '/jira/software/c/projects/', body('Parse_JSON')?['projectKey'], '/boards/', variables('foundBoardId'), '/backlog?epics=visible&issueParent=', body('Parse_JSON')?['issueId'], '&selectedIssue=', body('Parse_JSON')?['issueKey'])"
+                }
+              },
+              "Split_boardNames": {
+                "type": "Compose",
+                "inputs": "@split(body('Parse_JSON')?['boardNames'], '|||')"
+              },
+              "Split_boardIds": {
+                "runAfter": {
+                  "Split_boardNames": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "Compose",
+                "inputs": "@split(body('Parse_JSON')?['boardIds'], '|||')"
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "contains": [
+                    "@body('Parse_JSON')?['boardIds']",
+                    "|||"
+                  ]
+                }
+              }
+            ]
+          },
+          "type": "If"
+        },
+        "Initialize_boardURL": {
           "runAfter": {
             "Parse_JSON": [
               "Succeeded"
             ]
           },
-          "type": "Compose",
-          "inputs": "@split(body('Parse_JSON')?['boardNames'], ', ')"
-        },
-        "Compose_-_Split_boardIds": {
-          "runAfter": {
-            "Compose_-_Split_boardNames": [
-              "Succeeded"
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "boardURL",
+                "type": "string"
+              }
             ]
-          },
-          "type": "Compose",
-          "inputs": "@split(body('Parse_JSON')?['boardIds'], ', ')"
+          }
         },
         "Initialize_variable_-_foundBoardId": {
           "runAfter": {
-            "Compose_-_Split_boardIds": [
+            "Initialize_boardURL": [
               "Succeeded"
             ]
           },
@@ -174,54 +278,6 @@
               }
             ]
           }
-        },
-        "Apply_to_each": {
-          "foreach": "@outputs('Compose_-_Split_boardNames')",
-          "actions": {
-            "Condition": {
-              "actions": {
-                "Set_variable": {
-                  "type": "SetVariable",
-                  "inputs": {
-                    "name": "foundBoardId",
-                    "value": "@outputs('Compose_-_Split_boardIds')[variables('index')]"
-                  }
-                }
-              },
-              "else": {
-                "actions": {}
-              },
-              "expression": {
-                "and": [
-                  {
-                    "equals": [
-                      "@items('Apply_to_each')",
-                      "@body('Parse_JSON')?['boardName']"
-                    ]
-                  }
-                ]
-              },
-              "type": "If"
-            },
-            "Increment_variable": {
-              "runAfter": {
-                "Condition": [
-                  "Succeeded"
-                ]
-              },
-              "type": "IncrementVariable",
-              "inputs": {
-                "name": "index",
-                "value": 1
-              }
-            }
-          },
-          "runAfter": {
-            "Initialize_variable_-_index": [
-              "Succeeded"
-            ]
-          },
-          "type": "Foreach"
         }
       }
     },
