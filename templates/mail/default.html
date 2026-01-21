@@ -1,66 +1,105 @@
+<!DOCTYPE html>
 <html lang="nl">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Meeting Event</title>
-  <style>
-    body { margin: 0; padding: 0; font-family: "Calibri", sans-serif; }
-    .container { width: 650px; margin: 0 auto; }
-    .header { padding: 20pt; text-align: left; }
-    .header h1 { color: black; font-size: 20pt; margin-top: 0;}
-    .header h2 { color: black; font-size: 18pt; margin: 0; }
-    .content { margin: 0 22.5pt 15pt 22.5pt; text-align: center; font-size: 10pt; font-family: Arial, sans-serif; }
-    .footer { padding: 20pt 20pt 20pt; }
-    .footer p { color: black; font-size: 10pt; font-family: Calibri, sans-serif; }
-    .footer a { color: black; }
-    .attendees-box { padding: 10px; background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; margin: 15pt 22.5pt; }
-    .description-box { margin: 15pt 22.5pt; padding: 10px; border-top: 1px solid #e1e4e8; }
-    .description-box h3 { font-family: "BMW Group Condensed", sans-serif; color: black; font-size: 11pt; margin-top: 0; }
-  </style>
 </head>
+<body style="margin: 0; padding: 0; background-color: #ffffff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Arial, Helvetica, sans-serif;">
 
-<body>
-<div class="container">
-  <table width="650" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
-    <tr>
-      <td class="header">
-        <h1>New Meeting Event</h1>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="attendees-box">
-          <b>Attendees:</b><br>
-          <code>{{ ATTENDEES }}</code>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="content">
-          <p>Beste deelnemers,</p>
-          <p>U bent uitgenodigd voor deze vergadering.</p>
-          <p><b>Verwachtingen: Uw goede humeur.</b></p>
-          <p>Met vriendelijke groeten</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="description-box">
-          <h3>Summary</h3>
-          <div class="content"><p>{{ SUMMARY }}</p></div>
-          <h3>Description</h3>
-          <div class="content"><p>{{ DESCRIPTION }}</p></div>
-          <h3>URL</h3>
-          <div class="content"><p><a href={{ URL }}>URL pre-selected Backlog</a></p></div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="footer">
-        <p>Vragen? Contacteer ons op <a href="mailto:ict.helpdesk@default.be">ict.helpdesk@default.com</a> of +32-0-000-000.</p>
-      </td>
-    </tr>
-  </table>
-</div>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; background-color: #ffffff;">
+  <tr>
+    <td align="center" style="padding: 0;">
+
+      <table width="650" cellpadding="0" cellspacing="0" border="0" style="width: 650px; border-collapse: collapse; background-color: #ffffff;">
+
+        <tr>
+          <td width="650" height="60" valign="top" bgcolor="#f6f8fa" style="padding: 20px 22px 0px 22px;">
+            <h1 style="margin: 0; font-family: Arial, sans-serif; font-size: 22pt; font-weight: bold; color: #000000;">
+              New Meeting Event
+            </h1>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 10px 22px 15px 22px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; background-color: #f6f8fa; border: 1px solid #e1e4e8;">
+              <tr>
+                <td style="padding: 10px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;">
+                  <strong style="font-size: 10pt;">Attendees: </strong><br>
+                  <code style="font-family: 'Courier New', Courier, monospace;">{{ ATTENDEES }}</code>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td align="center" style="padding: 10px 22px 20px 22px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000; text-align: left;">
+            Beste deelnemers,<br><br>
+            U bent uitgenodigd voor deze vergadering.<br><br>
+            <strong>Verwachtingen voor deze sessie:</strong><br>Geen nood aan een voorgekauwde analyse! Dit ondergraaft de dialoog die we nodig hebben met jullie. <br>Jullie expertise, kennis en goed humeur zouden voldoende moeten zijn.<br><br>
+            Vriendelijke groet
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding: 15px 22px 40px 22px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-top: 1px solid #e1e4e8;">
+              <colgroup>
+                <col style="width: 120px;">
+                <col style="width: auto;">
+              </colgroup>
+              <tr>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <h3 style="margin: 0 0 5px 0; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;">
+                    Summary
+                  </h3>
+                </td>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <div style="text-align: left; 20px;">
+                    <p style="margin: 0; font-size: 10pt; color: #000000;">{{ SUMMARY }}</p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif">
+                  <h3 style="margin: 0 0 5px 0; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;">
+                    Description
+                  </h3>
+                </td>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <div style="text-align: left; 20px;">
+                    <p style="margin: 0; font-size: 10pt; color: #000000;">{{ DESCRIPTION }}</p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <h3 style="margin: 0 0 5px 0; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;">
+                    URL
+                  </h3>
+                </td>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <div style="text-align: left; 20px;">
+                    <p style="margin: 0; font-size: 10pt; color: #000000;"><a href={{ URL }}><img src="https://johantre.github.io/ms-outlook-invite/images/atlassian.png" alt="Jira" width="14" height="14"style="vertical-align: middle; margin-right: 6px; border: 0;"/>URL pre-selected Backlog</a></p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td bgcolor="#f6f8fa" style="background-repeat: no-repeat; background-position: 20pt 20pt; padding: 80pt 20pt 20pt 20pt; background-size: 150px;">
+            <p style="margin: 0; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;">Vragen? Contacteer ons op <a href="mailto:ict.helpdesk@acme.com" style="color: #000000; text-decoration: underline;">ict.helpdesk@acme.</a> of +32-9-000-000.</p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
 </body>
 </html>

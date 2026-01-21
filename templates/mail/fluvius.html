@@ -26,7 +26,7 @@
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; background-color: #f6f8fa; border: 1px solid #e1e4e8;">
               <tr>
                 <td style="padding: 10px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000;">
-                  <strong style="font-size: 10pt;">Attendees:</strong><br>
+                  <strong style="font-size: 10pt;">Attendees: </strong><br>
                   <code style="font-family: 'Courier New', Courier, monospace;">{{ ATTENDEES }}</code>
                 </td>
               </tr>
@@ -35,37 +35,54 @@
         </tr>
 
         <tr>
-          <td align="center" style="padding: 10px 22px 20px 22px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000; text-align: center;">
-            <p style="margin: 0 0 10px 0; line-height: 1.4;">Beste deelnemers,</p>
-            <p style="margin: 0 0 10px 0; line-height: 1.4;">U bent uitgenodigd voor deze vergadering.</p>
-            <p style="margin: 0 0 10px 0; line-height: 1.4;"><strong>Verwachtingen: Uw goede humeur.</strong></p>
-            <p style="margin: 0; line-height: 1.4;">Met vriendelijke groeten</p>
+          <td align="center" style="padding: 10px 22px 20px 22px; font-family: Arial, sans-serif; font-size: 10pt; color: #000000; text-align: left;">
+            Beste deelnemers,<br><br>
+            U bent uitgenodigd voor deze vergadering.<br><br>
+            <strong>Verwachtingen voor deze sessie:</strong><br>Geen nood aan een voorgekauwde analyse! Dit ondergraaft de dialoog die we nodig hebben met jullie. <br>Jullie expertise, kennis en goed humeur zouden voldoende moeten zijn.<br><br>
+            Vriendelijke groet
           </td>
         </tr>
 
         <tr>
           <td style="padding: 15px 22px 40px 22px;">
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border-top: 1px solid #e1e4e8;">
+              <colgroup>
+                <col style="width: 120px;">
+                <col style="width: auto;">
+              </colgroup>
               <tr>
-                <td style="padding-top: 15px; font-family: Arial, sans-serif;">
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
                   <h3 style="margin: 0 0 5px 0; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;">
                     Summary
                   </h3>
-                  <div style="text-align: center; padding-bottom: 25px;">
+                </td>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <div style="text-align: left; 20px;">
                     <p style="margin: 0; font-size: 10pt; color: #000000;">{{ SUMMARY }}</p>
                   </div>
-
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif">
                   <h3 style="margin: 0 0 5px 0; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;">
                     Description
                   </h3>
-                  <div style="text-align: center;">
+                </td>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <div style="text-align: left; 20px;">
                     <p style="margin: 0; font-size: 10pt; color: #000000;">{{ DESCRIPTION }}</p>
                   </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
                   <h3 style="margin: 0 0 5px 0; font-family: Arial, sans-serif; font-size: 11pt; font-weight: bold; text-align: left; color: #000000;">
                     URL
                   </h3>
-                  <div style="text-align: center;">
-                    <p style="margin: 0; font-size: 10pt; color: #000000;"><a href={{ URL }}>URL pre-selected Backlog</a></p>
+                </td>
+                <td style="vertical-align: top; padding-top: 15px; font-family: Arial, sans-serif;">
+                  <div style="text-align: left; 20px;">
+                    <p style="margin: 0; font-size: 10pt; color: #000000;"><a href={{ URL }}><img src="https://johantre.github.io/ms-outlook-invite/images/atlassian.png" alt="Jira" width="14" height="14"style="vertical-align: middle; margin-right: 6px; border: 0;"/>URL pre-selected Backlog</a></p>
                   </div>
                 </td>
               </tr>
