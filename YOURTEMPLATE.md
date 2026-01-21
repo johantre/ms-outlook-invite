@@ -7,7 +7,7 @@ This guide explains how to create your own branded HTML template for the MS Outl
 Before diving in, understand that there are **two different JSONs** involved - don't confuse them!
 
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph BUILD ["🔧 BUILD TIME — GitHub Actions"]
         direction LR
         TPL["📄 <b>HTML Template</b><br/><code>templates/mail/brand.html</code><br/>─────────────<br/>{{ ATTENDEES }}<br/>{{ SUMMARY }}<br/>{{ DESCRIPTION }}<br/>{{ URL }}"]
