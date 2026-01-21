@@ -22,7 +22,7 @@ def generate_pa_body(template_path):
     # The quotes and commas are critical for the @concat expression
     html = html.replace('{{ ATTENDEES }}', "', body('Parse_JSON')?['attendees'], '")
     html = html.replace('{{ SUMMARY }}', "', body('Parse_JSON')?['subject'], '")
-    html = html.replace('{{ DESCRIPTION }}', "', body('Parse_JSON')?['description'], '")
+    html = html.replace('{{ DESCRIPTION }}', "', replace(body('Parse_JSON')?['description'], decodeUriComponent('%0A'), '<br>'), '")
     html = html.replace('{{ URL }}', "', variables('boardURL'), '")
 
     # 4. Wrap the whole thing in the Power Automate concat function
