@@ -140,6 +140,7 @@ Under the following terms:
 - No additional restrictions: You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
 See the [LICENSE](LICENSE) file for details.
+
 ---
 
 **Made with ❤️ for efficiency and automation**
