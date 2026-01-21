@@ -55,6 +55,9 @@ Most corporate Licenses cover what's required, however. Following licenses meet 
 - **Office 365 E3 or E5** (with Power Automate included)
 - **Power Automate per user plan**
 
+### Atlassian
+- All tests were performed on an instance of Jira Cloud. 
+
 ### Required Permissions
 - Access to Power Automate environment
 - Outlook/Exchange Online mailbox
@@ -127,7 +130,6 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
   }
 
 ```
-
 #### <img style="vertical-align: middle" src='assets/images/atlassian.png' width='30' height='30' /> Example: Jira Automation
 
 1. Go to **Project settings** > **Automation** or through the actions button (⚡) >  
@@ -161,14 +163,14 @@ The email body must contain valid JSON with the following fields:
 |---------------|------|------------|------------------------------------------------------------------------------------------|
 | `subject`     | String | Yes        | Meeting title                                                                            |
 | `attendees`   | String | Yes        | Semicolon-separated email addresses                                                      |
-| `location`    | String | Yes        | Meeting start time                                                                       |
-| `description` | String | Yes        | Meeting description/agenda                                                               |
-| `host`        | String | Yes        | Host e.g. https://acme.atlassian.net/                                                    |
-| `projectKey`  | String | Yes        | Project prefix of your issue: e.g. MTM                                                   |
-| `issueId`     | String | Yes        | The id of your clicked issue: e.g. 10002                                                 |
-| `issueKey`    | String | Yes        | The key of your clicked issue e.g. MTM-101                                               |
-| `boardNames`  | String | Yes/No (*) | All the board names created for your Enterprise managed Space: e.g. My board, Your board |
-| `boardIds`    | String | Yes        | All the board id's created for your Enterprise managed Space: e.g. 34, 35                |
+| `location`    | String | Yes        | Meeting location                                                                         |
+| `description` | String | Yes        | Meeting description                                                               |
+| `host`        | String | Yes        | Host                                                                                     |
+| `projectKey`  | String | Yes        | Project prefix of your issues                                                  |
+| `issueId`     | String | Yes        | The id of your clicked issue                                                 |
+| `issueKey`    | String | Yes        | The key of your clicked issue                                               |
+| `boardNames`  | String | Yes/No (*) | All the board names created for your Enterprise managed Space |
+| `boardIds`    | String | Yes        | All the board id's created for your Enterprise managed Space                |
 | `boardName`   | String | Yes/No (*) | The board name you want to refer to in your URL (*)                                      |
 
 
