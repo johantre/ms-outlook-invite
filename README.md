@@ -112,13 +112,19 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
 **Body** (JSON):
 ```json
   {
-   "subject": "Sprint Planning Q1 2026",
-   "begin": "12:00",
-   "end": "13:00",
-   "attendees": "john.doe@company.com, jane.smith@company.com; team@company.com",
-   "location": "Ball room",
-   "description": "We need to get moving!"
-}
+       "subject": "Sprint Planning Q1 2026",
+       "attendees": "john.doe@company.com, jane.smith@company.com; team@company.com",
+       "location": "Ball room",
+       "description": "We need to get moving!",
+       "host": "https://acme.atlassian.net",
+       "projectKey": "MTM",
+       "issueId": "1001",
+       "projectKey": "MTM",
+       "issueKey": "MTM-102",
+       "boardNames": "My Board, His board",
+       "boardIds": "34, 35",
+       "boardName": "My Board"
+  }
 
 ```
 
@@ -132,31 +138,44 @@ Set up your external system (Jira, Confluence, custom app, etc.) to send emails 
     - **Subject**: `[AUTO-INVITE] {{issue.summary}}`
     - **Body**:
    ```json
-   {
-     "subject": "{{issue.summary}}",
-     "begin": "{{now()}}",
-     "end": "{{now().plusMinutes(60)}}",
-     "attendees": "{{issue.Involved People.emailAddress}}",
-     "location": "Ball room",
-     "description": "{{issue.description.jsonEncode}}"
-   }
+    {
+        "subject": "{{issue.summary}}",
+        "attendees": "{{issue.Involved People.emailAddress}}",
+        "location": "Board room",
+        "description": "{{issue.description.html.jsonEncode}}",
+        "host": "{{baseUrl}}",
+        "projectKey": "{{project.key}}",
+        "issueId": "{{issue.id}}",
+        "issueKey": "{{issue.key}}",
+        "boardNames": "{{#webhookResponse.body.values}}{{name}}{{^last}}|||{{/}}{{/}}",
+        "boardIds": "{{#webhookResponse.body.values}}{{id}}{{^last}}|||{{/}}{{/}}",
+        "boardName": "{{userInputs.boardName}}"
+    }
    ```
+   (the ||| is to create a unique delimiter)    
 #### JSON Payload Specification
 
 The email body must contain valid JSON with the following fields:
 
-| Field         | Type | Required | Description                         |
-|---------------|------|----------|-------------------------------------|
-| `subject`     | String | Yes | Meeting title                       |
-| `begin`       | String | Yes | Meeting start time                  |
-| `end`         | String | Yes | Meeting end time                    |
-| `description` | String | Yes | Meeting description/agenda          |
-| `attendees`   | String | Yes | Semicolon-separated email addresses |
+| Field         | Type | Required   | Description                                                                              |
+|---------------|------|------------|------------------------------------------------------------------------------------------|
+| `subject`     | String | Yes        | Meeting title                                                                            |
+| `attendees`   | String | Yes        | Semicolon-separated email addresses                                                      |
+| `location`    | String | Yes        | Meeting start time                                                                       |
+| `description` | String | Yes        | Meeting description/agenda                                                               |
+| `host`        | String | Yes        | Host e.g. https://acme.atlassian.net/                                                    |
+| `projectKey`  | String | Yes        | Project prefix of your issue: e.g. MTM                                                   |
+| `issueId`     | String | Yes        | The id of your clicked issue: e.g. 10002                                                 |
+| `issueKey`    | String | Yes        | The key of your clicked issue e.g. MTM-101                                               |
+| `boardNames`  | String | Yes/No (*) | All the board names created for your Enterprise managed Space: e.g. My board, Your board |
+| `boardIds`    | String | Yes        | All the board id's created for your Enterprise managed Space: e.g. 34, 35                |
+| `boardName`   | String | Yes/No (*) | The board name you want to refer to in your URL (*)                                      |
 
-**Notes:**
-- Start time is automatically set to **now()** (current time)
-- End time is automatically set to **1 hour after start**
-- Attendees are included in the invite body but **not** as actual invitees (see Manual Steps)
+
+**URL pointing the Jira Backlog view (*)**
+- In Jira you have 2 types of Spaces (formerly called Projects), and have different URL signatures
+  - Team-managed Spaces: Only 1 board Id
+  - Enterprise-managed Spaces: Multiple boards possible, 'boardName' is key to retrieve the right board Id with index from found in boardNames 
 
 📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/at.html)
 
