@@ -59,7 +59,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
-3. **Browse** → Select your ZIP file → **Next** → **Review and adjust all connections** (select your connection Office 365, not Office 365.com!) → **Import**
+3. Click **Browse** → Select your ZIP file → **Next** → **Review and adjust all connections** (select your connection Office 365, not Office 365.com!) → **Import**
 4. Wait a little: importing status on top of page 
 5. Open the solution and **turn on** the flow
 
@@ -72,7 +72,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 2. Name it: `AUTO-INVITE`
 
 **Create the rule:**
-1. **Settings** → **Mail** → **Rules** → **Add new rule**
+1. Click **Settings** → **Mail** → **Rules** → **Add new rule**
 2. Condition: Subject includes `[AUTO-INVITE]`
 3. Action: Move to `AUTO-INVITE` folder
 
