@@ -96,11 +96,12 @@ After the automation creates your calendar invite, you must:
 
 ## 📚 Documentation
 
-| Document | Description |
-|----------|-------------|
-| [YOURTEMPLATE.md](./YOURTEMPLATE.md) | Create your own branded template |
-| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | Common issues and solutions |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | Technical details for developers |
+| Document                                   | Description                        |
+|--------------------------------------------|------------------------------------|
+| [YOURTEMPLATE.md](./YOURTEMPLATE.md)       | Create your own branded template   |
+| [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md) | Create import your jira automation |
+| [ARCHITECTURE.md](./ARCHITECTURE.md)       | Technical details for developers   |
+| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | Common issues and solutions        |
 
 ## 🙋 Support
 
