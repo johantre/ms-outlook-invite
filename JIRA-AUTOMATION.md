@@ -31,8 +31,8 @@ echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
 > **Important**: Use `-n` flag to avoid newline in the encoding!
 
 #### Interactive
-- Go to https://www.base64encode.org/ 
-- Copy paste your service-user@yourcompany.com:YOUR-API-TOKEN
+- Go to [base64encode.org](https://www.base64encode.org/) 
+- Copy-paste your service-user@yourcompany.com:YOUR-API-TOKEN
 - Click Encode & save it somewhere safe
 
 #### The result format
@@ -57,7 +57,7 @@ echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
    - Check the rule Actor and owner, adapt if needed
    - Go to "Send web request", change the authorization header from 
      - {{YOUR base64 encoded jira-automation@yourcompany.com:API key}} to your base encoded key.   
-     - The field value should look similar like: \  
+     - The field value should look similar to: \  
      ```Basic c2VydmljZS11c2VyQHlvdXABD31wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==``` 
    - Click Update and enable the rule (pill switch next to Update button)
 
