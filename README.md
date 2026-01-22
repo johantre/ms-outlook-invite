@@ -79,29 +79,9 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 ### Step 4: Configure Jira Automation
 
-1. **Project settings** → **Automation** → Create new rule
-2. Trigger: **Manually triggered**
-3. Action: **Send email**
-   - To: Your email
-   - Subject: `[AUTO-INVITE] {{issue.summary}}`
-   - Body:
-   ```json
-   {
-       "subject": "{{issue.summary}}",
-       "attendees": "{{issue.Involved People.emailAddress}}",
-       "location": "Board room",
-       "description": "{{issue.description.html.jsonEncode}}",
-       "host": "{{baseUrl}}",
-       "projectKey": "{{project.key}}",
-       "issueId": "{{issue.id}}",
-       "issueKey": "{{issue.key}}",
-       "boardNames": "{{#webhookResponse.body.values}}{{name}}{{^last}}|||{{/}}{{/}}",
-       "boardIds": "{{#webhookResponse.body.values}}{{id}}{{^last}}|||{{/}}{{/}}",
-       "boardName": "{{userInputs.boardName}}"
-   }
-   ```
+Check out [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md) for creating / importing your Jira Automation rule.
 
-📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html)
+📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html) for Rule usage & creation example.
 
 ## ⚠️ Manual Steps Required
 

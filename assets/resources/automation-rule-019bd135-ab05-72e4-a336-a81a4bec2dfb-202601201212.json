@@ -1,0 +1,157 @@
+{
+  "cloud": true,
+  "rules": [
+    {
+      "id": 3375511,
+      "clientKey": "be15d568-ab23-4f25-b71e-94f6db1b15e9",
+      "name": "Create Meeting Invite",
+      "state": "ENABLED",
+      "description": "Meeting invite, including URL parameters of the Backlog view w pre-selected Jira issue.",
+      "authorAccountId": "712020:ec9fdb6e-4346-4e6b-83e5-4b786a575c6d",
+      "actor": {
+        "type": "ACCOUNT_ID",
+        "value": "557058:f58131cb-b67d-43c7-b30d-6b58d40bd077"
+      },
+      "created": 1768741513990,
+      "updated": 1768908592740,
+      "trigger": {
+        "id": "c2bece9c-0f7b-469a-8aba-3c810f28fb0f",
+        "parentId": null,
+        "conditionParentId": null,
+        "component": "TRIGGER",
+        "type": "jira.manual.trigger.issue",
+        "value": {
+          "inputFromUsers": true,
+          "inputPrompts": [
+            {
+              "inputType": "TEXT",
+              "displayName": "Type the board name (upper left corner)",
+              "required": false,
+              "variableName": "boardName",
+              "defaultValue": ""
+            }
+          ],
+          "groups": [],
+          "issueFilter": {
+            "filterType": "ISSUE_TYPE",
+            "value": [
+              "Epic"
+            ]
+          },
+          "jQLFilter": null
+        },
+        "conditions": [],
+        "children": [],
+        "schemaVersion": 3,
+        "connectionId": null,
+        "checksum": null
+      },
+      "components": [
+        {
+          "id": "a1411d44-0283-436f-9e97-e4fc2bf0c553",
+          "parentId": null,
+          "conditionParentId": null,
+          "component": "ACTION",
+          "type": "jira.issue.outgoing.webhook",
+          "value": {
+            "url": "{{baseUrl}}/rest/agile/1.0/board?projectKeyOrId={{project.key}}",
+            "headers": [
+              {
+                "id": "_header_1768740950717",
+                "name": "Content-Type",
+                "value": "Application/JSON",
+                "headerSecure": false
+              },
+              {
+                "id": "_header_1768741190957",
+                "name": "Accept",
+                "value": "Application/JSON",
+                "headerSecure": false
+              },
+              {
+                "id": "_header_1768742102603",
+                "name": "Authorization",
+                "value": "Basic {{YOUR base64 encoded jira-automation@yourcompany.com:API key}}",
+                "headerSecure": false
+              }
+            ],
+            "sendIssue": false,
+            "contentType": "empty",
+            "customBody": null,
+            "method": "GET",
+            "responseEnabled": true,
+            "continueOnErrorEnabled": false
+          },
+          "conditions": [],
+          "children": [],
+          "schemaVersion": 1,
+          "connectionId": null,
+          "checksum": null
+        },
+        {
+          "id": "244c6d7d-150d-49f1-8b60-64982cdb4daf",
+          "parentId": null,
+          "conditionParentId": null,
+          "component": "ACTION",
+          "type": "jira.issue.outgoing.email",
+          "value": {
+            "fromName": "",
+            "replyTo": "",
+            "to": [
+              {
+                "type": "SMART",
+                "value": "{{initiator.emailAddress}}"
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "subject": "[AUTO-INVITE] {{issue.summary}}",
+            "body": "  {\n    \"subject\": \"{{issue.summary}}\",\n    \"attendees\": \"{{issue.Involved People.emailAddress}}\",\n    \"location\": \"Board room\",\n    \"description\": \"{{issue.description.jsonEncode}}\",\n    \"host\": \"{{baseUrl}}\",\n    \"projectKey\": \"{{project.key}}\",\n    \"issueId\": \"{{issue.id}}\",\n    \"issueKey\": \"{{issue.key}}\",\n    \"boardNames\": \"{{webhookResponse.body.values.name}}\",\n    \"boardIds\": \"{{webhookResponse.body.values.id}}\",\n    \"boardName\": \"{{userInputs.boardName}}\"\n  }\n",
+            "mimeType": "text/plain",
+            "convertLineBreaks": true
+          },
+          "conditions": [],
+          "children": [],
+          "schemaVersion": 5,
+          "connectionId": null,
+          "checksum": null
+        }
+      ],
+      "canOtherRuleTrigger": false,
+      "notifyOnError": "FIRSTERROR",
+      "projects": [],
+      "labels": [],
+      "tags": [
+        {
+          "id": 6259402,
+          "ruleIdUuid": "019bd135-ab05-72e4-a336-a81a4bec2dfb",
+          "tagType": "IS_RULE_UPDATED",
+          "tagValue": "true"
+        }
+      ],
+      "ruleScope": {
+        "resources": [
+          "ari:cloud:jira:19726e43-cff8-4d6d-bcf7-6a6a503dbce5:project/10033"
+        ]
+      },
+      "ruleHome": {
+        "ruleLifecycleHome": {
+          "locationARI": "ari:cloud:jira:19726e43-cff8-4d6d-bcf7-6a6a503dbce5:project/10033"
+        },
+        "ruleBillingHome": {
+          "locationARI": "ari:cloud:jira-software::site/19726e43-cff8-4d6d-bcf7-6a6a503dbce5"
+        }
+      },
+      "writeAccessType": "UNRESTRICTED",
+      "collaborators": [],
+      "billingType": "NORMAL",
+      "idUuid": "019bd135-ab05-72e4-a336-a81a4bec2dfb",
+      "partitionId": "be15d568-ab23-4f25-b71e-94f6db1b15e9",
+      "checksum": {
+        "version": 2,
+        "value": "1440b0a8f893db75dd9834c55720c726ed252f544c835e3362b0f578167ec8a7"
+      },
+      "currentVersionId": null
+    }
+  ]
+}
