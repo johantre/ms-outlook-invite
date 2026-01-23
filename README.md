@@ -59,7 +59,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
-3. Click **Browse** → Select your ZIP file → **Next** → Select your connection Office 365 Outlook, **not** Office 365 Outlook **.com**!) → **Import**
+3. Click **Browse** → Select your ZIP file → **Next** → Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
 4. Wait a little: importing status on top of page 
 5. Open the solution and **turn on** the flow
 
@@ -101,7 +101,7 @@ Note: The Jira import contains "Create Meeting Invite".
       </td>
     </tr>
     <tr>
-      <td valign="top"> 2. Immediate mail in Outlook → Wait a little → <strong>Invite is created</strong></td>
+      <td valign="top"> 2. Immediate mail in Outlook → Wait a little... → <strong>Invite is created</strong><br>(if this succeeded, the originated mail will be auto-deleted)</td>
       <td><img src="/docs/screenshots/OL-7.png" title="Outlook result" width="400"/></td>
     </tr>
     <tr>
@@ -128,12 +128,12 @@ Note: The Jira import contains "Create Meeting Invite".
 
 ## 📚 Documentation
 
-| Document                                   | Description                        |
-|--------------------------------------------|------------------------------------|
-| [YOURTEMPLATE.md](./YOURTEMPLATE.md)       | Create your own branded template   |
-| [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md) | Create import your jira automation |
-| [ARCHITECTURE.md](./ARCHITECTURE.md)       | Technical details for developers   |
-| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | Common issues and solutions        |
+| Document                                   | Description                          |
+|--------------------------------------------|--------------------------------------|
+| [YOURTEMPLATE.md](./YOURTEMPLATE.md)       | Create your own branded template     |
+| [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md) | Create / import your jira automation |
+| [ARCHITECTURE.md](./ARCHITECTURE.md)       | Technical details for developers     |
+| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | Common issues and solutions          |
 
 ## 🙋 Support
 
