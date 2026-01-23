@@ -83,7 +83,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 Create / import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md).
 
 📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html) for Rule usage & creation example.
-
+<br><br>
 ## 🖱️ Usage click paths
 
   <table>
