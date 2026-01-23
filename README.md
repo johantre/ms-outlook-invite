@@ -17,7 +17,7 @@ This project provides pre-built **Power Automate Solutions** that automatically:
 graph LR
     JIRA["🎯 <b>Jira / Confluence</b><br/>Send email with<br/>JSON payload"]
     OUTLOOK["📧 <b>Outlook</b><br/>Email moved to<br/>AUTO-INVITE folder"]
-    PA["⚡ <b>Power Automate</b><br/>Parse JSON<br/>Create invite"]
+    PA["⚡ <b>Power Automate</b><br/>Parse JSON<br/>Create invite<br/>Auto-delete email"]
     MANUAL["👤 <b>You</b><br/>Review, find slot<br/>Send invite"]
 
     JIRA --> OUTLOOK --> PA --> MANUAL
@@ -45,7 +45,7 @@ Note: The Jira import contains "Create Meeting Invite".
       </td>
     </tr>
     <tr>
-      <td valign="top"> 2. Immediate mail in Outlook → Wait a little... → <strong>Invite is created</strong><br>(if this succeeded, the originated mail will be auto-deleted)</td>
+      <td valign="top"> 2. Immediate mail in Outlook → Wait a little... → <strong>Invite is created</strong><br>(if succeeded, original mail will be auto-deleted)</td>
       <td><img src="/docs/screenshots/OL-7.png" title="Outlook result" width="400"/></td>
     </tr>
     <tr>
@@ -58,8 +58,8 @@ Note: The Jira import contains "Create Meeting Invite".
         <ul>
           <li><strong>Review</strong> the invite details</li>
           <li><strong>Copy attendees</strong> from the invite body</li>
-          <li><strong>Find a time slot</strong> that works for everyone</li>
-          <li><strong>→ Why?</strong> The automation creates a <strong>placeholder</strong> invite for you to review.<br>It doesn't auto-invite attendees, <br>giving you time to coordinate schedules and <strong>provide context and expectations to your attendees.</strong></li>
+          <li><strong>Find a time slot</strong> that works for everyone</li> 
+          <li><strong>Ensure</strong> new attendees are aware of expectations</li>
         </ul>
       </td>
     </tr>
@@ -91,7 +91,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 ## 🚀 Setup Guide
 
-### Step 1: Download Your Template
+### Step 1: Download your template
 
 1. Go to the [Releases page](../../releases)
 2. Download the ZIP for your desired template
@@ -101,7 +101,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
-3. Click **Browse** → Select your ZIP file → **Next** → Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
+3. Click **Browse** → Select your ZIP file → **Next** → <br>Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
 4. Wait a little: importing status on top of page 
 5. Open the solution and **turn on** the flow
 
