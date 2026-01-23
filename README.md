@@ -90,8 +90,8 @@ Create / import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JI
     <tr><td><strong>Action</strong></td><td><strong>Screenshot</strong></td></tr>
     <tr>
       <td valign="top"> 1. Open an Epic → ⚡ Action button → <br>Click <strong>Create Meeting invite</strong> → <br>Fill out the <strong>board name</strong> for Company-managed board, OR<br>Leave empty for Team-managed board.<br><br>
-<img src="/docs/screenshots/AT-0-Cpy-MgtSpace.png" title="Company-managed-Space" width="200"/><br>Team-managed<br><br>
-<img src="/docs/screenshots/AT-0-Team-MgtSpace.png" title="Team-managed-Space" width="200"/><br>Company-managed<br><br>
+<img src="/docs/screenshots/AT-0-Cpy-MgtSpace.png" title="Company-managed-Space" width="200"/><br>Company-managed<br><br>
+<img src="/docs/screenshots/AT-0-Team-MgtSpace.png" title="Team-managed-Space" width="200"/><br>Team-managed<br><br>
       </td>
       <td><img src="/docs/screenshots/AT-0.png" title="Jira Action" width="400"/><br>
 Note: Screenshot in Jira shows "Create Meeting Invite" i.s.o.<br>
