@@ -56,7 +56,7 @@ echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
 3. Go to the imported rule > Edit
    - Check the rule Actor and owner, adapt if needed
    - Go to "Send web request", change the authorization header from 
-     - {{YOUR base64 encoded jira-automation@yourcompany.com:API key}} to your base encoded key.   
+     - {{YOUR base64 encoded jira-automation@yourcompany.com:API key}} to your base64 encode key.   
      - The field value should look similar to: \  
      ```Basic c2VydmljZS11c2VyQHlvdXABD31wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==``` 
    - Click Update and enable the rule (pill switch next to Update button)
@@ -79,7 +79,6 @@ If you need to dynamically get board IDs:
      - Name: `Authorization`
      - Value: `Basic YOUR-BASE64-ENCODED-CREDENTIALS`
      - ☑️ **Hidden** (check this box!)
-   - **Response**: Save as `webhookResponse`
 
 #### Add Send Email Action
 

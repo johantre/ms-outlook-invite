@@ -59,7 +59,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
-3. Click **Browse** → Select your ZIP file → **Next** → **Review and adjust all connections** (select your connection Office 365 Outlook, **not** Office 365 Outlook **.com**!) → **Import**
+3. Click **Browse** → Select your ZIP file → **Next** → Select your connection Office 365 Outlook, **not** Office 365 Outlook **.com**!) → **Import**
 4. Wait a little: importing status on top of page 
 5. Open the solution and **turn on** the flow
 
@@ -84,16 +84,45 @@ Create / import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JI
 
 📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html) for Rule usage & creation example.
 
-## ⚠️ Manual Steps Required
+## 🖱️ Usage click paths
 
-After the automation creates your calendar invite, you must:
+  <table>
+    <tr><td><strong>Action</strong></td><td><strong>Screenshot</strong></td></tr>
+    <tr>
+      <td valign="top"> 1. Open an Epic → ⚡ Action button → <br>Click <strong>Create Meeting invite</strong><br><br>
+Note: Screenshot in Jira shows "Create Meeting Invite" i.s.o.<br>
+"AUTO-INVITE" on other screenshots. <br>
+This is the name you gave your Jira automation (call it whatever you like).<br>
+Note: The Jira import contains "Create Meeting Invite".  
+      </td>
+      <td><img src="/docs/screenshots/AT-0.png" title="Jira Action" width="400"/></td>
+    </tr>
+    <tr>
+      <td valign="top"> 2. Immediate mail in Outlook → Wait a little → <strong>Invite is created</strong></td>
+      <td><img src="/docs/screenshots/OL-7.png" title="Outlook result" width="400"/></td>
+    </tr>
+    <tr>
+      <td valign="top"> 3. Double click invite to see details</td>
+      <td><img src="/docs/screenshots/OL-8.png" title="Outlook result" width="400"/></td>
+    </tr>
+    <tr>
+      <td valign="top"> 4. Manual steps still required</td>
+      <td>
+        <ul>
+          <li><strong>Review</strong> the invite details</li>
+          <li><strong>Copy attendees</strong> from the invite body</li>
+          <li><strong>Find a time slot</strong> that works for everyone</li>
+          <li><strong>→ Why?</strong> The automation creates a <strong>placeholder</strong> invite for you to review.<br>It doesn't auto-invite attendees, <br>giving you time to coordinate schedules and <strong>provide context and expectations to your attendees.</strong></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top" style="background-color: #f0f0f0;"><strong>→ Why the manual steps?</strong><br>
+        The automation creates a <strong>placeholder</strong> invite for you to review. <br>It doesn't auto-invite attendees, giving you time to coordinate schedules and <strong>provide context and expectations</strong> to your attendees.
+      </td>
+    </tr>
 
-1. **Review** the invite details
-2. **Copy attendees** from the invite body
-3. **Find a time slot** that works for everyone
-4. **Send** the actual meeting invite
-
-> **Why?** The automation creates a *placeholder* invite for you to review. It doesn't auto-invite attendees, giving you time to coordinate schedules and add context.
+  </table>
 
 ## 📚 Documentation
 
