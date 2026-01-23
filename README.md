@@ -123,7 +123,6 @@ Note: The Jira import contains "Create Meeting Invite".
         The automation creates a <strong>placeholder</strong> invite for you to review. <br>It doesn't auto-invite attendees, giving you time to coordinate schedules and <strong>provide context and expectations</strong> to your attendees.
       </td>
     </tr>
-
   </table>
 
 ## 📚 Documentation
