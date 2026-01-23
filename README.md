@@ -28,63 +28,7 @@ graph LR
     style MANUAL fill:#f6f8fa,stroke:#d0d7de,stroke-width:2px,color:#24292f
 ```
 
-## 🎨 Available Templates
-
-Download from the [Releases page](../../releases):
-
-| Template | File |
-|----------|------|
-| BMW | `MSOutlookInvite_bmw.zip` |
-| Volvo | `MSOutlookInvite_volvo.zip` |
-| Fluvius | `MSOutlookInvite_fluvius.zip` |
-| Default | `MSOutlookInvite_default.zip` |
-
-Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
-
-## 📋 Prerequisites
-
-- **Microsoft 365** account with Exchange mailbox and Power Automate access
-- **Outlook** web or desktop client
-- **Jira/Confluence** (or any system that can send emails)
-
-## 🚀 Setup Guide
-
-### Step 1: Download Your Template
-
-1. Go to the [Releases page](../../releases)
-2. Download the ZIP for your desired template
-3. Save it somewhere accessible
-
-### Step 2: Import into Power Automate
-
-1. Go to [Power Automate](https://make.powerautomate.com)
-2. Click **Solutions** → **Import solution**
-3. Click **Browse** → Select your ZIP file → **Next** → Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
-4. Wait a little: importing status on top of page 
-5. Open the solution and **turn on** the flow
-
-📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html)
-
-### Step 3: Configure Outlook
-
-**Create the folder:**
-1. In Outlook, right-click your account → **Create new folder**
-2. Name it: `AUTO-INVITE`
-
-**Create the rule:**
-1. Click **Settings** → **Mail** → **Rules** → **Add new rule**
-2. Condition: Subject includes `[AUTO-INVITE]`
-3. Action: Move to `AUTO-INVITE` folder
-
-📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/ol.html)
-
-### Step 4: Configure Jira Automation
-
-Create / import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md).
-
-📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html) for Rule usage & creation example.
-<br><br>
-## 🖱️ Usage click paths
+## 🖱️ In practice
 
   <table>
     <tr><td><strong>Action</strong></td><td><strong>Screenshot</strong></td></tr>
@@ -126,6 +70,62 @@ Note: The Jira import contains "Create Meeting Invite".
     </tr>
   </table>
 
+## 🎨 Available Templates
+
+Download from the [Releases page](../../releases):
+
+| Template | File |
+|----------|------|
+| BMW | `MSOutlookInvite_bmw.zip` |
+| Volvo | `MSOutlookInvite_volvo.zip` |
+| Fluvius | `MSOutlookInvite_fluvius.zip` |
+| Default | `MSOutlookInvite_default.zip` |
+
+Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
+
+## 📋 Prerequisites
+
+- **Microsoft 365** account with Exchange mailbox and Power Automate access
+- **Outlook** web or desktop client
+- **Jira/Confluence** (or any system that can send emails)
+
+## 🚀 Setup Guide
+
+### Step 1: Download Your Template
+
+1. Go to the [Releases page](../../releases)
+2. Download the ZIP for your desired template
+3. Save it somewhere accessible
+
+### Step 2: Import Power Automate template
+
+1. Go to [Power Automate](https://make.powerautomate.com)
+2. Click **Solutions** → **Import solution**
+3. Click **Browse** → Select your ZIP file → **Next** → Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
+4. Wait a little: importing status on top of page 
+5. Open the solution and **turn on** the flow
+
+📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html)
+
+### Step 3: Configure Outlook
+
+**Create folder:**
+1. In Outlook, right-click your account → **Create new folder**
+2. Name it: `AUTO-INVITE`
+
+**Create rule:**
+1. Click **Settings** → **Mail** → **Rules** → **Add new rule**
+2. Condition: Subject includes `[AUTO-INVITE]`
+3. Action: Move to `AUTO-INVITE` folder
+
+📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/ol.html)
+
+### Step 4: Configure Jira Automation
+
+Create / Import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md).
+
+📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html) for Rule usage & creation example.
+<br><br>
 ## 📚 Documentation
 
 | Document                                   | Description                          |
