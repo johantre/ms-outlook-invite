@@ -40,7 +40,7 @@ graph LR
       <td><img src="/docs/screenshots/AT-0.png" title="Jira Action" width="400"/><br>
 Note: Screenshot in Jira shows "Create Meeting Invite" i.s.o.<br>
 "AUTO-INVITE" on other screenshots. <br>
-This is the name you gave your Jira automation (call it whatever you like).<br>
+This is the name you gave your Jira automation. Call it whatever you like. <br>(See <a href="./JIRA-AUTOMATION.md">JIRA-AUTOMATION.md</a>)<br>
 Note: The Jira import contains "Create Meeting Invite".
       </td>
     </tr>
