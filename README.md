@@ -29,7 +29,7 @@ graph LR
 ```
 
 ## 🖱️ In practice
-
+(from a Jira setup)
   <table>
     <tr><td><strong>Action</strong></td><td><strong>Screenshot</strong></td></tr>
     <tr>
