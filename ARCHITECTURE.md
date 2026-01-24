@@ -39,6 +39,20 @@ flowchart TB
     BUILD -->|"ZIP artifact"| RUNTIME
 ```
 
+## 📋 The Three JSONs Explained
+
+This solution involves **three different JSONs** — don't confuse them!
+
+| JSON Type                     | When | What                                                                                                                    | Location                                                                         |
+|-------------------------------|------|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| **Input <br>JSON**            | Runtime | Data payload with actual values like <br>`"subject": "Sprint Planning Q1"`                                              | Email body sent by Jira automation                                               |
+| **Solution <br>JSON**         | Build time | Workflow definition containing PA expressions like <br>`body('Parse_JSON')?['subject']` to extract data from the Input JSON | `solution/Workflows/*.json` → packaged in importable ZIP for PA |
+| **Jira Automation Rule JSON** | Setup time | Jira automation rule definition that configures <br>the trigger, web request, and email action                          | `assets/resources/automation-rule-*.json` → straight importable in Jira          |
+
+- The **Input JSON** is what Jira sends at runtime — it carries the actual meeting data.
+- The **Solution JSON** is the Power Automate workflow that knows *how* to parse that input and create a calendar event.
+- The **Jira Automation Rule JSON** is an importable rule template that sets up the Jira side (trigger → web request → send email with Input JSON).
+
 ## 📁 Repository Structure
 
 ```

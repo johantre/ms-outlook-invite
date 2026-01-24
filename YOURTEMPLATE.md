@@ -1,10 +1,10 @@
-# 🎨 Create Your Own Template
+# 🎨 Create Your Own HTML Template
 
 This guide explains how to create your own branded HTML template for the MS Outlook Auto-Invite solution.
 
 ## 🧩 How It All Fits Together
 
-Before diving in, understand that there are **two different JSONs** involved - don't confuse them!
+Before diving in, understand that there are three different JSONs involved — see [ARCHITECTURE.md](./ARCHITECTURE.md#-the-three-jsons-explained) for the full picture.
 
 ```mermaid
 flowchart LR
@@ -27,13 +27,6 @@ flowchart LR
 
     SOL -.->|"import into PA environment"| PA
 ```
-
-### 📋 The Two JSONs Explained
-
-| JSON Type        | When | What                                                                                                                                  | Location |
-|------------------|------|---------------------------------------------------------------------------------------------------------------------------------------|----------|
-| **Input <br/>JSON**   | Runtime | Data payload with actual values like `"subject": "Sprint Planning Q1"`                                                                | Email body sent by Jira automation |
-| **Solution JSON** | Build time | Workflow definition containing PA expressions like `body('Parse_JSON')?['subject']`<br> to get the data from the **Input JSON** above | `solution/Workflows/*.json` → packaged in ZIP |
 
 **Your template only deals with placeholders** like `{{ SUMMARY }}`. The build script converts these to PA expressions, and Power Automate fills in the actual values at runtime.
 
