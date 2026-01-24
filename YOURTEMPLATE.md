@@ -47,6 +47,7 @@ Add your template to the official repo so others can use it too.
 2. Create your template (see below)
 3. Submit a Pull Request
 4. Host your own images (optional, but recommended)
+5. Enjoy the built Power Automate Solution 
 
 Your template will be included in official releases and available to all users.\
 As a bonus, this repo will provide all infrastructure for the built Power Automate (PA) Solutions you can download in the release section.\
