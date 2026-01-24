@@ -1,8 +1,8 @@
-# Architecture
+# 🏗️ Architecture
 
 Technical documentation for developers and contributors who want to understand how the MS Outlook Auto-Invite solution works under the hood.
 
-## System Overview
+## 🔭 System Overview
 
 ```mermaid
 flowchart TB
@@ -39,7 +39,7 @@ flowchart TB
     BUILD -->|"ZIP artifact"| RUNTIME
 ```
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```
 ms-outlook-invite/
@@ -65,12 +65,12 @@ ms-outlook-invite/
 └── ARCHITECTURE.md          # This file
 ```
 
-## Power Automate Workflow
+## ⚡ Power Automate Workflow
 
-### Trigger
+### 🎯 Trigger
 The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AUTO-INVITE]` in the subject.
 
-### Actions
+### ⚙️ Actions
 
 1. **Parse JSON**
    - Reads the email body
@@ -90,7 +90,7 @@ The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AU
    - Injects the HTML template with dynamic values
    - Sets start time to `now()`, end time to `now() + 1 hour`
 
-### URL Construction Logic
+### 🔗 URL Construction Logic
 
 ```
 Team-managed:
@@ -100,13 +100,13 @@ Enterprise-managed:
 {host}/jira/software/c/projects/{projectKey}/boards/{foundBoardId}/backlog?...
 ```
 
-## Build Script
+## 🐍 Build Script
 
-### `generate_solution.py`
+### 📄 `generate_solution.py`
 
 The Python script that processes HTML templates into Power Automate-ready solutions.
 
-### What it does
+### 🔧 What it does
 
 1. **Read template**: Loads HTML from `templates/mail/{brand}.html`
 2. **Minify**: Removes newlines and extra whitespace
@@ -123,7 +123,7 @@ The Python script that processes HTML templates into Power Automate-ready soluti
 5. **Wrap in concat**: Wraps entire HTML in `@{concat('...')}` expression
 6. **Update workflow**: Writes the processed template into the workflow JSON
 
-### Usage
+### 💻 Usage
 
 ```bash
 python3 scripts/generate_solution.py <brand>
@@ -136,9 +136,9 @@ python3 scripts/generate_solution.py bmw
 
 This reads `templates/mail/bmw.html` and updates `solution/Workflows/*.json`.
 
-## GitHub Actions
+## 🚀 GitHub Actions
 
-### `build-solution.yml` (Manual)
+### 🔨 `build-solution.yml` (Manual)
 
 Manually trigger a build for a specific brand.
 
@@ -151,7 +151,7 @@ Manually trigger a build for a specific brand.
 3. Create ZIP of solution folder
 4. Upload as release artifact
 
-### `smart-build-solution.yml` (Automated)
+### 🤖 `smart-build-solution.yml` (Automated)
 
 Automatically builds affected templates when changes are pushed.
 
@@ -165,7 +165,7 @@ Automatically builds affected templates when changes are pushed.
 3. If core files changed (script, solution), rebuild all templates
 4. Create/update releases with `latest-{brand}-build` tags
 
-### Release Artifacts
+### 📦 Release Artifacts
 
 Each build creates a ZIP file:
 - `MSOutlookInvite_bmw.zip`
@@ -175,7 +175,7 @@ Each build creates a ZIP file:
 
 These are Power Automate solution packages ready for import.
 
-## Solution Package Structure
+## 🗂️ Solution Package Structure
 
 The ZIP file contains a Power Automate solution:
 
@@ -188,7 +188,7 @@ MSOutlookInvite_brand.zip
     └── ms-outlook-invite-*.json   # The actual workflow definition
 ```
 
-### Workflow JSON
+### 📋 Workflow JSON
 
 The workflow JSON (`solution/Workflows/*.json`) contains:
 - **Connection references**: Links to Office 365 connector
@@ -196,7 +196,7 @@ The workflow JSON (`solution/Workflows/*.json`) contains:
 - **Action definitions**: Parse JSON, variables, conditions, create event
 - **Template body**: The processed HTML template with PA expressions
 
-### Important IDs
+### 🔑 Important IDs
 
 The workflow contains hardcoded IDs that are specific to the original environment:
 - **Folder ID**: Points to the AUTO-INVITE folder (must be reconfigured after import)
@@ -205,7 +205,7 @@ The workflow contains hardcoded IDs that are specific to the original environmen
 
 Users must configure these after importing the solution.
 
-## Adding a New Template
+## ➕ Adding a New Template
 
 See [YOURTEMPLATE.md](./YOURTEMPLATE.md) for detailed instructions.
 
