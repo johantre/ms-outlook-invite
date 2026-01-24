@@ -83,12 +83,12 @@ The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AU
    - `index` - Loop counter for board matching with `boardName`, in `boardNames` to find `boardIds`
 
 3. **Build Board URL**
-   - **Team-managed spaces**: \
+   - **Team-managed spaces**:
    ```
    {host}/jira/software/projects/{projectKey}/boards/{boardIds}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
    ```
    
-   - **Enterprise-managed spaces**: \
+   - **Enterprise-managed spaces**:
    ```
    {host}/jira/software/c/projects/{projectKey}/boards/{foundBoardId}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
    ```
