@@ -62,7 +62,7 @@ Check for valid JSON [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
 
 **Incorrect**: `john@company.com ; jane@company.com` (space before semicolon)
 
-### Description Shows Raw Markup
+### Description in Invite shows raw Markup
 
 If you see wiki markup like `||header||` or `*bullet*` instead of formatted text:
 
@@ -70,7 +70,7 @@ If you see wiki markup like `||header||` or `*bullet*` instead of formatted text
 - The `.html` converts wiki markup to HTML
 - The `.jsonEncode` escapes it for JSON transport
 
-## Description is Empty
+## Description in Invite is Empty
 
 If the description field is empty in your calendar invite:
 
@@ -97,15 +97,14 @@ You can test the Power Automate flow by manually sending an email:
 ### Expected timing
 - Jira automations: Usually instant
 - Email delivery: Usually instant
-- Power Automate trigger: A few seconds (not 5 minutes)
+- Power Automate trigger: A 10-20 seconds (not 5 minutes)
 
 If Power Automate takes too long, check if the flow is in a "Suspended" state.
 
 ## Known Limitations
 
-- **Manual coordination required**: Attendees are not auto-invited; you must find time slots manually
 - **Outlook/Exchange only**: Power Automate's calendar connector only works with Microsoft 365
-- **Plain text email body**: The JSON must be in plain text, not HTML formatted email
+- **Plain text email body**: The body of the mail with the payload JSON must be in plain text, not HTML formatted email
 - **No attachments**: The automation only reads the email body, not attachments
 - **Default 1-hour duration**: Meeting duration is hardcoded to 1 hour
 
