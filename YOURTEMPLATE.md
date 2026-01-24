@@ -153,10 +153,10 @@ If contributing to this repo:
 #### 3️⃣ Option 3: Host Your Own Images
 
 Mandatory for Forks, recommended for Enterprises in general, avoiding GitHub dependency.
-For independent deployments, host images on your own infrastructure:
+For independent deployments, host images on your own infrastructure either by:
 
 - Your own GitHub Pages (`https://yourusername.github.io/...`)
-- Company CDN or web server
+- Company CDN or web server (`https://yourdomain.com/...`)
 - Cloud storage (AWS S3, Azure Blob, etc.)
 
 > **Important**: Email clients block images by default. Always provide a meaningful `bgcolor` fallback and don't rely solely on images for critical information.

@@ -135,7 +135,13 @@ Example:
 python3 scripts/generate_solution.py bmw
 ```
 
-This reads `templates/mail/bmw.html` and updates `solution/Workflows/*.json`.
+This reads `templates/mail/bmw.html` and updates `solution/Workflows/*.json`. \
+The script is intended to live within a runner where a full cloned repo is available (see GitHub workflows). \
+As in that runner it isn't the intention to Git commit, push etc, it doesn't harm to overwrite existing files. \
+When the runner has finished, its instance is cleaned up, and all changes done are thrown away. \
+
+⚠️ **Important!** That means for testing purposes, if you run this script on your local machine, it will **OVERWRITE** the existing workflow with a parsed version. \
+Pay attention to not accidentally take that into your local commits. It is not a breaking commit however, but unnecessary change to your code base.
 
 ## 🚀 GitHub Actions
 
