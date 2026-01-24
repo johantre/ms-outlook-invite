@@ -8,7 +8,8 @@ This guide explains how to configure the Jira Automation that triggers the MS Ou
 
 Create a dedicated user account for automation purposes:
 
-1. Create a regular Atlassian account (e.g., `jira-automation@yourcompany.com`)
+1. Create a regular Atlassian account \
+(e.g., `jira-automation@yourcompany.com`, `service-user@yourcompany.com`, ...)
    - Use a shared mailbox or distribution list you can access (the above address needs a mailbox!)
    - This is NOT an Atlassian "Service Account" (those don't support Basic Auth)
 
