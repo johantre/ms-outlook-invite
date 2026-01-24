@@ -30,9 +30,9 @@ flowchart LR
 
 ### 📋 The Two JSONs Explained
 
-| JSON Type | When | What                                                                                                                                  | Location |
-|-----------|------|---------------------------------------------------------------------------------------------------------------------------------------|----------|
-| **Input JSON** | Runtime | Data payload with actual values like `"subject": "Sprint Planning Q1"`                                                                | Email body sent by Jira automation |
+| JSON Type        | When | What                                                                                                                                  | Location |
+|------------------|------|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| **Input <br/>JSON**   | Runtime | Data payload with actual values like `"subject": "Sprint Planning Q1"`                                                                | Email body sent by Jira automation |
 | **Solution JSON** | Build time | Workflow definition containing PA expressions like `body('Parse_JSON')?['subject']`<br> to get the data from the **Input JSON** above | `solution/Workflows/*.json` → packaged in ZIP |
 
 **Your template only deals with placeholders** like `{{ SUMMARY }}`. The build script converts these to PA expressions, and Power Automate fills in the actual values at runtime.
