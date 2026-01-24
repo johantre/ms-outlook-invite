@@ -92,12 +92,13 @@ The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AU
 
 ### 🔗 URL Construction Logic
 
+**Team-managed**:
 ```
-Team-managed:
-{host}/jira/software/projects/{projectKey}/boards/{boardIds}/backlog?...
-
-Enterprise-managed:
-{host}/jira/software/c/projects/{projectKey}/boards/{foundBoardId}/backlog?...
+{host}/jira/software/projects/{projectKey}/boards/{boardIds}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
+```
+**Enterprise-managed**: (`foundBoardId` → built in PA flow from the other JSON parameters `boardNames`, `boardIds`, `boardName`)
+```
+{host}/jira/software/c/projects/{projectKey}/boards/{foundBoardId}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
 ```
 
 ## 🐍 Build Script
