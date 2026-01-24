@@ -74,33 +74,34 @@ The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AU
 
 1. **Parse JSON**
    - Reads the email body
-   - Extracts fields: `subject`, `attendees`, `description`, `location`, `host`, `projectKey`, `issueId`, `issueKey`, `boardNames`, `boardIds`, `boardName`
+   - Extracts fields: \
+   `subject`, `attendees`, `description`, `location`, `host`, `projectKey`, `issueId`, `issueKey`, `boardNames`, `boardIds`, `boardName`
 
 2. **Initialize Variables**
    - `boardURL` - Will hold the constructed Jira backlog URL
    - `foundBoardId` - Used for Enterprise-managed spaces
-   - `index` - Loop counter for board matching
+   - `index` - Loop counter for board matching with `boardName`, in `boardNames` to find `boardIds`
 
 3. **Build Board URL**
-   - **Team-managed spaces**: Single board, simple URL construction
-   - **Enterprise-managed spaces**: Multiple boards, matches `boardName` against `boardNames` array to find correct `boardId`
+   - **Team-managed spaces**: \
+   ```
+   {host}/jira/software/projects/{projectKey}/boards/{boardIds}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
+   ```
+   
+   - **Enterprise-managed spaces**: \
+   ```
+   {host}/jira/software/c/projects/{projectKey}/boards/{foundBoardId}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
+   ```
 
 4. **Create Event**
    - Creates Outlook calendar event
-   - Injects the HTML template with dynamic values
+   - Injects the HTML template with dynamic values 
    - Sets start time to `now()`, end time to `now() + 1 hour`
 
-### 🔗 URL Construction Logic
-
-**Team-managed**:
-```
-{host}/jira/software/projects/{projectKey}/boards/{boardIds}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
-```
-**Enterprise-managed**: (`foundBoardId` → built in PA flow from the other JSON parameters `boardNames`, `boardIds`, `boardName`)
-```
-{host}/jira/software/c/projects/{projectKey}/boards/{foundBoardId}/backlog?epics=visible&issueParent={issueId}&selectedIssue={issueKey}
-```
-
+5. **Auto-delete original mail**
+   - If Create Event was successful, delete mail with JSON payload
+   - If not successful, keep it for investigation purposes
+ 
 ## 🐍 Build Script
 
 ### 📄 `generate_solution.py`
