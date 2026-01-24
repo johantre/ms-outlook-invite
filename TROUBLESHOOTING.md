@@ -43,14 +43,7 @@ The email body must contain valid JSON. Common issues:
 **Validate your JSON** using [jsonlint.com](https://jsonlint.com) before sending.
 
 ### Example of valid JSON
-```json
-{
-    "subject": "Sprint Planning",
-    "attendees": "john@company.com; jane@company.com",
-    "location": "Board room",
-    "description": "Planning session"
-}
-```
+Check for valid JSON [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
 
 ## Calendar Event Not Created
 
