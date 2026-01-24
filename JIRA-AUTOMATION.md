@@ -1,10 +1,10 @@
-# Jira Automation Setup
+# ⚙️ Jira Automation Setup
 
 This guide explains how to configure the Jira Automation that triggers the MS Outlook Auto-Invite workflow.
 
-## Prerequisites
+## 📋 Prerequisites
 
-### Service User (Recommended)
+### 👤 Service User (Recommended)
 
 Create a dedicated user account for automation purposes:
 
@@ -22,26 +22,26 @@ Create a dedicated user account for automation purposes:
    - Add user to Jira with **Browse Projects** permission
    - Add user to required projects as **Viewer** or **Member**
 
-### Base64 Credentials
+### 🔑 Base64 Credentials
 Encode the credentials for the Authorization header. 2 options:
-#### Bash
+#### 💻 Bash
 ```bash
 echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
 ```
 > **Important**: Use `-n` flag to avoid newline in the encoding!
 
-#### Interactive
+#### 🌐 Interactive
 - Go to [base64encode.org](https://www.base64encode.org/) 
 - Copy-paste your service-user@yourcompany.com:YOUR-API-TOKEN
 - Click Encode & save it somewhere safe
 
-#### The result format
+#### 📝 The result format
 
  `c2VydmljZS11c2VyQHlvdXJjb21wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==`
 
-## Automation Rule Setup
+## 🔧 Automation Rule Setup
 
-### Import the Rule in Jira 
+### 📥 Import the Rule in Jira
 
 1. Download [Jira Automation Rule](assets/resources/automation-rule-019bd135-ab05-72e4-a336-a81a4bec2dfb-202601201212.json) from this repo
 2. With an authorized(!) user 
@@ -61,13 +61,13 @@ echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
      ```Basic c2VydmljZS11c2VyQHlvdXABD31wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==``` 
    - Click Update and enable the rule (pill switch next to Update button)
 
-### Create the Rule manually
+### ✍️ Create the Rule manually
 
 1. Go to **Project Settings** → **Automation** (or global automation)
 2. Click **Create rule**
 3. Select trigger: **Manually triggered** (or your preferred trigger)
 
-#### Add Web Request Action (Optional - for board lookup)
+#### 🌐 Add Web Request Action (Optional - for board lookup)
 
 If you need to dynamically get board IDs:
 
@@ -80,7 +80,7 @@ If you need to dynamically get board IDs:
      - Value: `Basic YOUR-BASE64-ENCODED-CREDENTIALS`
      - ☑️ **Hidden** (check this box!)
 
-#### Add Send Email Action
+#### 📧 Add Send Email Action
 
 1. Add action: **Send email**
 2. Configure:
@@ -105,9 +105,9 @@ If you need to dynamically get board IDs:
 ```
 📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/at.html) for Rule usage & creation example.
 
-## Automation Rule Explained
+## 📖 Automation Rule Explained
 
-### JSON Payload Fields
+### 📦 JSON Payload Fields
 
 | Field | Required | Description | Example |
 |-------|----------|-------------|---------|
@@ -123,9 +123,9 @@ If you need to dynamically get board IDs:
 | `boardIds` | Yes | All board IDs | See template above |
 | `boardName` | No | Selected board name | `{{userInputs.boardName}}` |
 
-### Smart Values Reference
+### 🧠 Smart Values Reference
 
-#### Description Formatting
+#### 📝 Description Formatting
 
 | Smart Value | Output |
 |-------------|--------|
@@ -133,44 +133,44 @@ If you need to dynamically get board IDs:
 | `{{issue.description.html}}` | Rendered HTML |
 | `{{issue.description.html.jsonEncode}}` | HTML escaped for JSON ✅ |
 
-#### Attendees Field
+#### 👥 Attendees Field
 
 The `Involved People` field (or your custom multi-user field):
 - `{{issue.Involved People.emailAddress}}` returns semicolon-separated emails
 
-#### Board Lookup Response
+#### 🔍 Board Lookup Response
 
 The web request returns boards in `webhookResponse.body.values[]`:
 - `{{#webhookResponse.body.values}}{{name}}{{^last}}|||{{/}}{{/}}` - All names with `|||` delimiter
 - `{{#webhookResponse.body.values}}{{id}}{{^last}}|||{{/}}{{/}}` - All IDs with `|||` delimiter
 
-### Security Best Practices
+### 🔒 Security Best Practices
 
 1. **Hide sensitive headers**: Always check the **Hidden** checkbox for Authorization headers
 2. **Use dedicated service user**: Don't use personal accounts for automation
 3. **Minimal permissions**: Grant only Browse Projects permission
 4. **Rotate tokens**: Regenerate API tokens periodically (Atlassian requires yearly rotation since 2025)
 
-### Troubleshooting
+### 🛠️ Troubleshooting
 
-#### 401 Authentication Error
+#### 🚫 401 Authentication Error
 
 - Verify email matches the account that generated the token
 - Check base64 encoding (use `echo -n` to avoid newlines)
 - Ensure format is `Basic <base64>` with space after "Basic"
 - API token must be from id.atlassian.com, not admin.atlassian.com
 
-#### Empty Description
+#### 📭 Empty Description
 
 - Use `{{issue.description.html.jsonEncode}}` for proper formatting
 - Check if the issue actually has a description
 
-#### Web Request Fails
+#### ❌ Web Request Fails
 
 - Verify the service user has project access
 - Check the URL format matches your Jira instance type
 
-### Example: Complete Automation Rule
+### 💡 Example: Complete Automation Rule
 
 ```
 TRIGGER: Manually triggered
@@ -185,7 +185,7 @@ ACTION: Send email
   Body: { JSON payload }
 ```
 
-### Related Documentation
+### 📚 Related Documentation
 
 - [YOURTEMPLATE.md](./YOURTEMPLATE.md) - Create custom email templates
 - [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues and solutions
