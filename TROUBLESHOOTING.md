@@ -62,25 +62,15 @@ Check for valid JSON [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
 
 **Incorrect**: `john@company.com ; jane@company.com` (space before semicolon)
 
-### 📝 Description in Invite shows raw Markup
+### 📝 Description Problems
 
-If you see wiki markup like `||header||` or `*bullet*` instead of formatted text:
+**Raw markup visible** (e.g. `||header||` or `*bullet*`):
+- Use `{{issue.description.html.jsonEncode}}` in your Jira Automation — see [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md#-description-formatting) for the full smart values reference.
 
-- In Jira Automation, use `{{issue.description.html.jsonEncode}}` instead of `{{issue.description}}`
-- The `.html` converts wiki markup to HTML
-- The `.jsonEncode` escapes it for JSON transport
-
-## 📭 Description in Invite is Empty
-
-If the description field is empty in your calendar invite:
-
+**Description is empty**:
 1. **Check the source**: Verify the Jira issue actually has a description
-2. **Check the email**: Look at the raw email body - is the description field populated?
+2. **Check the email**: Look at the raw email body — is the description field populated?
 3. **Check Power Automate**: Look at the Parse JSON step output
-4. **Smart value issue**: Some Jira smart values return empty for certain field types. Try:
-   - `{{issue.description}}` - raw text
-   - `{{issue.description.html}}` - as HTML
-   - `{{issue.description.html.jsonEncode}}` - HTML escaped for JSON
 
 ## 🧪 Testing & Debugging
 

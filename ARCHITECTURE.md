@@ -74,8 +74,7 @@ The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AU
 
 1. **Parse JSON**
    - Reads the email body
-   - Extracts fields: \
-   `subject`, `attendees`, `description`, `location`, `host`, `projectKey`, `issueId`, `issueKey`, `boardNames`, `boardIds`, `boardName`
+   - Extracts fields from the JSON payload (see [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md#-json-payload-fields) for field details)
 
 2. **Initialize Variables**
    - `boardURL` - Will hold the constructed Jira backlog URL

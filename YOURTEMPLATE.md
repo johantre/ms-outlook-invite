@@ -223,17 +223,9 @@ Run the build script locally to verify your template works:
 python3 scripts/generate_solution.py yourtemplate
 ```
 
-This will:
-- Read `templates/mail/yourtemplate.html`
-- Replace placeholders {{ ATTENDEES }}, {{ SUMMARY }}, {{ DESCRIPTION }} and {{ URL }} in your template by PA expressions 
-- Update the workflow JSON in `solution/Workflows/` with your filled out template 
+This replaces your template placeholders with Power Automate expressions and updates the workflow JSON. See [ARCHITECTURE.md](./ARCHITECTURE.md#-build-script) for full details on what the script does.
 
-⚠️ **Important!**
-This script is intended to live within a runner where a full cloned repo is available (see GitHub workflows). \
-As in that runner it isn't the intention to Git commit, push etc, it doesn't harm to overwrite existing files. \
-When the runner has finished, its instance is cleaned up, and all changes done are thrown away. \
-That means for testing purposes, if you run this script on your local machine, it will **OVERWRITE** the existing workflow with a parsed version. \
-Pay attention to not accidentally take that into your local commits. It is not a breaking commit however, but unnecessary change to your code base.
+⚠️ **Important!** Running this locally will **OVERWRITE** the existing workflow JSON with a parsed version. Don't accidentally commit that change — it's not breaking, but unnecessary in your code base.
 
 ### 🔄 Full Integration Testing
 
@@ -251,19 +243,6 @@ Pay attention to not accidentally take that into your local commits. It is not a
 7. Your imported PA automation will be triggered and create an invite in your Outlook Calendar.
 
 📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/pa.html)
-
-## 📖 Variable Reference
-
-Here's how each placeholder maps to Power Automate expressions:
-
-| Template Placeholder | Power Automate Expression |
-|---------------------|---------------------------|
-| `{{ ATTENDEES }}` | `body('Parse_JSON')?['attendees']` |
-| `{{ SUMMARY }}` | `body('Parse_JSON')?['subject']` |
-| `{{ DESCRIPTION }}` | `body('Parse_JSON')?['description']` |
-| `{{ URL }}` | `variables('boardURL')` |
-
-The `boardURL` variable is constructed by the Power Automate workflow from multiple JSON fields (`host`, `projectKey`, `boardIds`, etc.).
 
 ## ✅ Checklist Before Submitting
 
