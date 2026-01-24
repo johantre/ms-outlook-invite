@@ -2,7 +2,19 @@
 
 Common issues and solutions for the MS Outlook Auto-Invite solution.
 
-## Flow Not Triggering
+## Jira Automation "some errors"
+Check error in automation logs:
+- Mail problem?
+    - mail recepient correct?
+- Web request problem?
+    - API token expired? 
+    - Correct end point URL?
+Try 
+- re-importing automation (guaranteed working)
+- re-create API token
+More info [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
+
+## Power Automate Flow Not Triggering
 
 ### Email not being processed
 - Verify the email subject contains `[AUTO-INVITE]`
