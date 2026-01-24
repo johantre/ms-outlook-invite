@@ -1,8 +1,8 @@
-# Create Your Own Template
+# 🎨 Create Your Own Template
 
 This guide explains how to create your own branded HTML template for the MS Outlook Auto-Invite solution.
 
-## How It All Fits Together
+## 🧩 How It All Fits Together
 
 Before diving in, understand that there are **two different JSONs** involved - don't confuse them!
 
@@ -28,7 +28,7 @@ flowchart LR
     SOL -.->|"import into PA environment"| PA
 ```
 
-### The Two JSONs Explained
+### 📋 The Two JSONs Explained
 
 | JSON Type | When | What                                                                                                                                  | Location |
 |-----------|------|---------------------------------------------------------------------------------------------------------------------------------------|----------|
@@ -37,9 +37,9 @@ flowchart LR
 
 **Your template only deals with placeholders** like `{{ SUMMARY }}`. The build script converts these to PA expressions, and Power Automate fills in the actual values at runtime.
 
-## Choose Your Path
+## 🛤️ Choose Your Path
 
-### Option A: Contribute to this Repository
+### 🤝 Option A: Contribute to this Repository
 
 Add your template to the official repo so others can use it too.
 
@@ -53,7 +53,7 @@ Your template will be included in official releases and available to all users.\
 As a bonus, this repo will provide all infrastructure for the built Power Automate (PA) Solutions you can download in the release section.\
 The PA Solution can be imported in [your PA environment](https://make.powerautomate.com/).   
 
-### Option B: Fork for Independent Use
+### 🍴 Option B: Fork for Independent Use
 
 Create your own independent copy if you want full control.
 
@@ -62,9 +62,9 @@ Create your own independent copy if you want full control.
 3. Modify GitHub Actions if needed
 4. Host your own images (mandatory)
 
-## Creating a Template
+## ✏️ Creating a Template
 
-### Quick Start: Copy an Existing Template (Recommended)
+### 🚀 Quick Start: Copy an Existing Template (Recommended)
 
 The easiest way to create a new template:
 
@@ -73,11 +73,11 @@ The easiest way to create a new template:
 3. Modify the branding (colors, text, images)
 4. Keep all `{{ VARIABLE }}` placeholders intact
 
-### Starting from Scratch
+### 🏗️ Starting from Scratch
 
 If you prefer to build from scratch, your template must include:
 
-#### Required Variables
+#### 📌 Required Variables
 
 Your HTML template **must** include these four placeholders exactly as shown:
 
@@ -88,7 +88,7 @@ Your HTML template **must** include these four placeholders exactly as shown:
 | `{{ DESCRIPTION }}` | Meeting description (supports HTML) | Issue description |
 | `{{ URL }}` | Link to relevant resource | Constructed from issue data |
 
-#### Minimal Template Structure
+#### 🏛️ Minimal Template Structure
 
 ```html
 <!DOCTYPE html>
@@ -112,7 +112,7 @@ Your HTML template **must** include these four placeholders exactly as shown:
 
 > **Note**: The `href={{ URL }}` must be written without quotes around the placeholder. The build script handles the Power Automate expression syntax.
 
-#### Email HTML Best Practices
+#### 💡 Email HTML Best Practices
 
 Email clients have limited CSS support. Follow these guidelines:
 
@@ -123,9 +123,9 @@ Email clients have limited CSS support. Follow these guidelines:
 - Always include **bgcolor** attributes alongside background-color styles
 - Test in multiple email clients (Outlook, Gmail, Apple Mail)
 
-## Image Hosting
+## 🖼️ Image Hosting
 
-### Current Templates
+### 📂 Current Templates
 
 The existing templates use GitHub Pages for image hosting:
 
@@ -135,22 +135,22 @@ https://johantre.github.io/ms-outlook-invite/images/bmw.png
 
 These images are stored in `docs/images/` and served via GitHub Pages.
 
-### For Your Own Templates
+### 🎯 For Your Own Templates
 
 You have several options:
 
-#### Option 1: No Images (Simplest)
+#### 1️⃣ Option 1: No Images (Simplest)
 
 See `templates/mail/default.html` for an example without background images. Uses solid colors and text-based headers instead.
 
-#### Option 2: Use This Repo's GitHub Pages (Contributors)
+#### 2️⃣ Option 2: Use This Repo's GitHub Pages (Contributors)
 
 If contributing to this repo:
 
 1. Add your image to `docs/images/`
 2. Reference it as `https://johantre.github.io/ms-outlook-invite/images/yourimage.png`
 
-#### Option 3: Host Your Own Images 
+#### 3️⃣ Option 3: Host Your Own Images
 
 Mandatory for Forks, recommended for Enterprises in general, avoiding GitHub dependency.
 For independent deployments, host images on your own infrastructure:
@@ -161,20 +161,20 @@ For independent deployments, host images on your own infrastructure:
 
 > **Important**: Email clients block images by default. Always provide a meaningful `bgcolor` fallback and don't rely solely on images for critical information.
 
-## Template Sections Explained
+## 📐 Template Sections Explained
 
 Looking at the existing templates, here's the typical structure:
 
-### 1. Header Row
+### 1️⃣ Header Row
 Background image or solid color with meeting title.
 
-### 2. Attendees Row
+### 2️⃣ Attendees Row
 Displays the `{{ ATTENDEES }}` list in a highlighted box.
 
-### 3. Introduction Row
+### 3️⃣ Introduction Row
 Welcome text, expectations, and greeting. This is static text you can customize per brand/language.
 
-### 4. Content Row
+### 4️⃣ Content Row
 A table with three rows for:
 - **Summary**: `{{ SUMMARY }}`
 - **Description**: `{{ DESCRIPTION }}` (can contain rich HTML from Jira)
@@ -203,18 +203,18 @@ Recommended layout uses `<colgroup>` for fixed label width:
 </table>
 ```
 
-### 5. Footer Row
+### 5️⃣ Footer Row
 Company branding, contact information, and legal text.
 
-## Testing Your Template
+## 🧪 Testing Your Template
 
-### Local Testing
+### 💻 Local Testing
 
 Recommended for tweaking your template. Some IDE's allow preview with localhost running in the background.
 1. Open your HTML file in a browser to check basic rendering
 2. The `{{ VARIABLES }}` will show as literal text - that's expected
 
-### Build Testing
+### 🔨 Build Testing
 
 If no IDE available with preview functionality, and static html viewing is needed:\
 Run the build script locally to verify your template works:
@@ -235,7 +235,7 @@ When the runner has finished, its instance is cleaned up, and all changes done a
 That means for testing purposes, if you run this script on your local machine, it will **OVERWRITE** the existing workflow with a parsed version. \
 Pay attention to not accidentally take that into your local commits. It is not a breaking commit however, but unnecessary change to your code base.
 
-### Full Integration Testing
+### 🔄 Full Integration Testing
 
 1. Commit and push your changes
 2. GitHub Actions will build the solution
@@ -252,7 +252,7 @@ Pay attention to not accidentally take that into your local commits. It is not a
 
 📸 Screenshots [click to view](https://johantre.github.io/ms-outlook-invite/pa.html)
 
-## Variable Reference
+## 📖 Variable Reference
 
 Here's how each placeholder maps to Power Automate expressions:
 
@@ -265,7 +265,7 @@ Here's how each placeholder maps to Power Automate expressions:
 
 The `boardURL` variable is constructed by the Power Automate workflow from multiple JSON fields (`host`, `projectKey`, `boardIds`, etc.).
 
-## Checklist Before Submitting
+## ✅ Checklist Before Submitting
 
 - [ ] Template renders correctly in browser
 - [ ] All four placeholders (`{{ ATTENDEES }}`, `{{ SUMMARY }}`, `{{ DESCRIPTION }}`, `{{ URL }}`) are present
@@ -275,7 +275,7 @@ The `boardURL` variable is constructed by the Power Automate workflow from multi
 - [ ] Build script runs without errors
 - [ ] Tested in actual email client (Outlook, Gmail, <your mail client>...)
 
-## Examples
+## 📚 Examples
 
 | Template | Description | Images |
 |----------|-------------|--------|
