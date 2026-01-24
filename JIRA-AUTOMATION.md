@@ -154,37 +154,7 @@ The web request returns boards in `webhookResponse.body.values[]`:
 
 ### 🛠️ Troubleshooting
 
-#### 🚫 401 Authentication Error
-
-- Verify email matches the account that generated the token
-- Check base64 encoding (use `echo -n` to avoid newlines)
-- Ensure format is `Basic <base64>` with space after "Basic"
-- API token must be from id.atlassian.com, not admin.atlassian.com
-
-#### 📭 Empty Description
-
-- Use `{{issue.description.html.jsonEncode}}` for proper formatting
-- Check if the issue actually has a description
-
-#### ❌ Web Request Fails
-
-- Verify the service user has project access
-- Check the URL format matches your Jira instance type
-
-### 💡 Example: Complete Automation Rule
-
-```
-TRIGGER: Manually triggered
-  ↓
-ACTION: Send web request
-  URL: {{baseUrl}}/rest/agile/1.0/board?projectKeyOrId={{project.key}}
-  Headers: Authorization: Basic [hidden]
-  ↓
-ACTION: Send email
-  To: your-email@company.com
-  Subject: [AUTO-INVITE] {{issue.summary}}
-  Body: { JSON payload }
-```
+More info [TROUBLESHOOTING.md](./TROUBLESHOOTING.md#-jira-automation-some-errors)
 
 ### 📚 Related Documentation
 

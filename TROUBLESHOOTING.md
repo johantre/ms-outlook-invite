@@ -3,7 +3,7 @@
 Common issues and solutions for the MS Outlook Auto-Invite solution.
 
 ## ⚠️ Jira Automation "some errors"
-Check error in automation logs:
+Generally, check error in automation logs:
 - Mail problem?
     - mail recepient correct?
 - Web request problem?
@@ -13,6 +13,40 @@ Try
 - re-importing automation (guaranteed working)
 - re-create API token
 More info [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
+
+### 🚫 401 Authentication Error
+
+- Verify email matches the account of the generated the token
+- Check base64 encoding (use `echo -n` to avoid newlines)
+- Ensure format is `Basic <base64>` with space after "Basic"
+- API token must be from id.atlassian.com, not admin.atlassian.com
+- The user executing the rule is **not** the `Actor`, or `Owner` (in Rule details panel), \
+  but the user related to the mail added in front of the API key before encoding it to base64.
+
+### 📭 Empty Description
+
+- Use `{{issue.description.html.jsonEncode}}` for proper formatting
+- Check if the issue actually has a description
+
+### ❌ Web Request Fails
+
+- Verify the service user has project access
+- Check the URL format matches your Jira instance type
+
+### 💡 Example: Complete Automation Rule
+
+```
+TRIGGER: Manually triggered
+  ↓
+ACTION: Send web request
+  URL: {{baseUrl}}/rest/agile/1.0/board?projectKeyOrId={{project.key}}
+  Headers: Authorization: Basic [hidden]
+  ↓
+ACTION: Send email
+  To: your-email@company.com
+  Subject: [AUTO-INVITE] {{issue.summary}}
+  Body: { JSON payload }
+```
 
 ## ⚡ Power Automate Flow Not Triggering
 
