@@ -31,7 +31,7 @@ The folder ID is stored in the [Workflow JSON](solution/Workflows/ms-outlook-inv
 
 **Solution**: Re-import the Power Automate solution and reconfigure the trigger to point to the new folder.
 
-## Invalid JSON Error
+### Invalid JSON Error
 
 The email body must contain valid JSON. Common issues:
 
@@ -45,14 +45,14 @@ The email body must contain valid JSON. Common issues:
 ### Example of valid JSON
 Check for valid JSON [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
 
-## Calendar Event Not Created
+### Calendar Event Not Created
 
 - Verify your Outlook connection in Power Automate is still valid
 - Check that you have calendar write permissions
 - Review the flow run history for detailed error messages
 - Ensure the Parse JSON step succeeded (check its output)
 
-## Attendees Not Formatted Correctly
+#### Attendees Not Formatted Correctly
 
 - Use semicolons (`;`) or commas (`,`) to separate email addresses
 - Ensure all email addresses are valid
@@ -62,7 +62,7 @@ Check for valid JSON [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md)
 
 **Incorrect**: `john@company.com ; jane@company.com` (space before semicolon)
 
-## Description Shows Raw Markup
+### Description Shows Raw Markup
 
 If you see wiki markup like `||header||` or `*bullet*` instead of formatted text:
 
