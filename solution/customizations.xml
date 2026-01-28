@@ -1,9 +1,9 @@
-<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25123.158" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25123.00160">
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25123.160" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25123.00160">
   <Entities></Entities>
   <Roles></Roles>
   <Workflows>
-    <Workflow WorkflowId="{6659800e-7ef1-f011-8406-00224885f6ff}" Name="ms-outlook-invite-office365-flow">
-      <JsonFileName>/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json</JsonFileName>
+    <Workflow WorkflowId="{ffd937a7-c3fa-f011-8406-00224885f6ff}" Name="ms-outlook-invite-office365-flow-importable">
+      <JsonFileName>/Workflows/ms-outlook-invite-office365-flow-importable-FFD937A7-C3FA-F011-8406-00224885F6FF.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -18,14 +18,14 @@
       <StatusCode>2</StatusCode>
       <RunAs>1</RunAs>
       <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IntroducedVersion>1.2.0.5</IntroducedVersion>
       <IsCustomizable>1</IsCustomizable>
       <BusinessProcessType>0</BusinessProcessType>
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <ModernFlowType>0</ModernFlowType>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ms-outlook-invite-office365-flow" />
+        <LocalizedName languagecode="1033" description="ms-outlook-invite-office365-flow-importable" />
       </LocalizedNames>
     </Workflow>
   </Workflows>

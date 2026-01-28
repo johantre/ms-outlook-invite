@@ -1,4 +1,4 @@
-<ImportExportXml version="9.2.25123.158" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25123.158" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25123.00160">
+<ImportExportXml version="9.2.25123.160" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25123.160" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25123.00160">
   <SolutionManifest>
     <UniqueName>msoutlookinviteoffice365</UniqueName>
     <LocalizedNames>
@@ -7,7 +7,7 @@
     <Descriptions>
       <Description description="Upgrade of ms-outlook-invite-office365-url" languagecode="1033" />
     </Descriptions>
-    <Version>1.2.0.5</Version>
+    <Version>1.2.0.8</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>johantrebv</UniqueName>
@@ -81,7 +81,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="29" id="{6659800e-7ef1-f011-8406-00224885f6ff}" behavior="0" />
+      <RootComponent type="29" id="{ffd937a7-c3fa-f011-8406-00224885f6ff}" behavior="0" />
     </RootComponents>
     <MissingDependencies />
   </SolutionManifest>

@@ -38,7 +38,7 @@
               "subjectFilter": "[AUTO-INVITE]",
               "importance": "Any",
               "fetchOnlyWithAttachment": false,
-              "folderPath": "Id::AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgAuAAAAAAAn4YegcsK8RLGp4bF1LkdDAQBsrr_0WlPPS45_whAiEEykAAAAAGyTAAA="
+              "folderPath": "Inbox"
             },
             "host": {
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
@@ -99,7 +99,7 @@
         },
         "Create_event_(V4)": {
           "runAfter": {
-            "boardIds_do_not_contain_','": [
+            "boardIds_do_not_contain_'|||'": [
               "Succeeded"
             ]
           },
@@ -109,7 +109,7 @@
           "type": "OpenApiConnection",
           "inputs": {
             "parameters": {
-              "table": "AAMkADNmMzk4NTBhLWY1YWYtNDcwMC1hMzY0LTc3MzRkYmMyZTA1MgBGAAAAAAAn4YegcsK8RLGp4bF1LkdDBwBsrr_0WlPPS45_whAiEEykAAAAAAEGAABsrr_0WlPPS45_whAiEEykAAAAACiMAAA=",
+              "table": "Calendar",
               "item/subject": "@body('Parse_JSON')['subject']",
               "item/start": "@utcNow()",
               "item/end": "@addHours(utcNow(), 1)",
@@ -124,7 +124,7 @@
             }
           }
         },
-        "boardIds_do_not_contain_','": {
+        "boardIds_do_not_contain_'|||'": {
           "actions": {
             "boardURL_TeamMgt": {
               "type": "SetVariable",
