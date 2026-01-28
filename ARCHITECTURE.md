@@ -82,7 +82,7 @@ ms-outlook-invite/
 ## ⚡ Power Automate Workflow
 
 ### 🎯 Trigger
-The flow triggers when a new email arrives in the `AUTO-INVITE` folder with `[AUTO-INVITE]` in the subject.
+The flow triggers when a new email arrives in Inbox with `[AUTO-INVITE]` in the subject.
 
 ### ⚙️ Actions
 
@@ -213,15 +213,15 @@ MSOutlookInvite_brand.zip
 
 The workflow JSON (`solution/Workflows/*.json`) contains:
 - **Connection references**: Links to Office 365 connector
-- **Trigger definition**: Email arrival trigger with folder ID
+- **Trigger definition**: Email arrival trigger on Inbox 
 - **Action definitions**: Parse JSON, variables, conditions, create event
 - **Template body**: The processed HTML template with PA expressions
 
 ### 🔑 Important IDs
 
 The workflow contains hardcoded IDs that are specific to the original environment:
-- **Folder ID**: Points to the AUTO-INVITE folder (must be reconfigured after import)
-- **Calendar ID**: Points to the default calendar
+- **Inbox name**: "Inbox", which resolves to the default Inbox, in any language
+- **Calendar name**: "Calendar", which resolves to the default Calendar, in any language
 - **Connection reference**: Links to the Office 365 connector
 
 Users must configure these after importing the solution.

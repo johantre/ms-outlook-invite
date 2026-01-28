@@ -107,20 +107,7 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html)
 
-### Step 3: Configure Outlook
-
-**Create folder:**
-1. In Outlook, right-click your account → **Create new folder**
-2. Name it: `AUTO-INVITE`
-
-**Create rule:**
-1. Click **Settings** → **Mail** → **Rules** → **Add new rule**
-2. Condition: Subject includes `[AUTO-INVITE]`
-3. Action: Move to `AUTO-INVITE` folder
-
-📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/ol.html)
-
-### Step 4: Configure Jira Automation
+### Step 3: Configure Jira Automation
 
 Create / Import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md).
 

@@ -19,7 +19,7 @@ flowchart LR
     subgraph RUNTIME ["⚡ RUNTIME — When email arrives"]
         direction LR
         JIRA["🔵 <b>Jira/Confluence</b><br/>─────────────<br/>Sends email with<br/>JSON in body"]
-        EMAIL["📧 <b>Outlook Inbox</b><br/>─────────────<br/>Email moved to<br/>AUTO-INVITE folder"]
+        EMAIL["📧 <b>Outlook Inbox</b><br/>─────────────<br/>Email subject<br/>[AUTO-INVITE] triggers PA"]
         PA["⚡ <b>Power Automate</b><br/>─────────────<br/>Parses JSON<br/>Uses PA expressions(*)<br/>Fills template<br/>Creates event"]
         CAL["📅 <b>Outlook Calendar</b><br/>─────────────<br/>Meeting invite<br/>with HTML body"]
         JIRA --> EMAIL --> PA --> CAL

@@ -5,7 +5,7 @@ Common issues and solutions for the MS Outlook Auto-Invite solution.
 ## ⚠️ Jira Automation "some errors"
 Generally, check error in automation logs:
 - Mail problem?
-    - mail recepient correct?
+    - mail recipient correct?
 - Web request problem?
     - API token expired? 
     - Correct end point URL?
@@ -52,16 +52,18 @@ ACTION: Send email
 
 ### 📧 Email not being processed
 - Verify the email subject contains `[AUTO-INVITE]`
-- Check that the email reached the AUTO-INVITE folder
 - Ensure the flow is **turned on** in Power Automate
 - Check flow run history for error messages
 
 ### 📂 Folder ID mismatch
-Each Outlook folder has an internal ID. If you renamed, removed, or recreated the `AUTO-INVITE` folder, the automation will fail because it references the old folder ID.
+Each Outlook folder has an internal ID. If you renamed, removed, or recreated that folder, the automation will fail because it references the old folder ID.
 
 The folder ID is stored in the [Workflow JSON](solution/Workflows/ms-outlook-invite-office365-flow-6659800E-7EF1-F011-8406-00224885F6FF.json) at these paths:
 - `triggers > action name > metadata > Id:`
 - `triggers > action name > inputs > parameters > folderPath:`
+
+Note that with last version, the need for an Outlook rule and an appropriate folder to move the incoming mail to is made redundant.  
+The folder checked upon is 'Inbox' and this should be working for all languages. (Postvak IN, etc)
 
 **Solution**: Re-import the Power Automate solution and reconfigure the trigger to point to the new folder.
 
