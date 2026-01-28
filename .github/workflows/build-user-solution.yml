@@ -11,7 +11,7 @@ on:
       brand:
         description: 'Brand template to use'
         required: true
-        default: 'volvo'
+        default: 'bmw'
         type: choice
         options:
           - bmw
