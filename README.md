@@ -16,7 +16,7 @@ This project provides pre-built **Power Automate Solutions** that automatically:
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#f6f8fa','primaryTextColor':'#24292f','primaryBorderColor':'#d0d7de','lineColor':'#656d76','secondaryColor':'#f6f8fa','tertiaryColor':'#f6f8fa'}}}%%
 graph LR
     JIRA["🎯 <b>Jira / Confluence</b><br/>Send email with<br/>JSON payload"]
-    OUTLOOK["📧 <b>Outlook</b><br/>Email moved to<br/>AUTO-INVITE folder"]
+    OUTLOOK["📧 <b>Outlook</b><br/>Email subject<br/>[AUTO-INVITE] triggers PA"]
     PA["⚡ <b>Power Automate</b><br/>Parse JSON<br/>Create invite<br/>Auto-delete email"]
     MANUAL["👤 <b>You</b><br/>Review, find slot<br/>Send invite"]
 
