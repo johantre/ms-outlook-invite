@@ -20,7 +20,7 @@ For development situations this is sufficient for tweaking your Flow and re-tryi
 Your connector stays the same, no worries here. 
 
 Passing the same Solution you made to someone else within your organization can quickly run into import errors. \
-The main reason is that the elements of your automation all do have their unique synthetic key, and importing the same key twice results in a duplicate key error.
+The main reason is that the elements of your automation all do have their unique synthetic key (GUID), and importing the same key twice results in a duplicate key error.
 
 ### Tenant, Environment
 Within the Power Automate platform you have the organization, called Tenant your licenses are used.
@@ -37,7 +37,7 @@ An arbitrary user can go to the Catalog, make his own automation based upon the 
 At the moment of writing the option of using **Power Platform Catalog** hasn't been tested. \
 Looking at [Releases page](../../releases) you'll see brand specific Solutions pre-build, ready to download. \
 Those are the Solutions you'd want to import into the Power Platform catalog; a sustainable solution for your distribution problem. \
-What the Catalog does when you import from it, it strips all synthetic keys and makes new ones for that user. 
+What the Catalog does when you import from it, it strips all synthetic keys (GUID's) and makes new ones for that user. 
 
 However, users that aren't operating under a Premium license (like Office 365 Standard) should also be able to enjoy the automation built in this repo. Hence, an answer below to this issue.  
 
@@ -51,13 +51,40 @@ They can be used for importing in the **Power Platform Catalog**, or for importi
 However, one needs to be cautious about re-importing it for another user within the same Environment, as it can lead to duplicate key errors.
 
 ### build-user-solution 
-(Manual build) Overcomes the duplicate key error and strips away the synthetic keys and replaces them by new ones. \
+(Manual build) Overcomes the duplicate key error and strips away the synthetic keys (GUID's) and replaces them by new ones. \
 As this build is user specific, it embeds the name of the user to avoid naming collisions. \
 The GH Actions workflow will ask for user name and brand. \
-When importing in a specific user [Power Automate platform](https:\\make.powerautomate.com), the new synthetic keys won't result in duplicate key errors. \
+When importing in a specific user [Power Automate platform](https:\\make.powerautomate.com), the new synthetic keys (GUID's) won't result in duplicate key errors. \
 Naming convention: **Latest \<brand name\> Solution Build (user name)**. E.g. "Latest volvo Solution Build (test.user)" 
 
 ### build-solution 
 (Manual build) Just like the smart-build-solution, but for a specific brand. \
 The GH Actions workflow will ask for user name and brand. \
 Naming convention: **Latest \<brand name\> Solution Build**. E.g. "Latest volvo Solution Build" 
+
+## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Importing 
+
+In short import at user level:
+1. Go to [Power Automate](https://make.powerautomate.com)
+2. Click **Solutions** → **Import solution**
+3. Click **Browse** → Select your ZIP file → **Next** → <br>Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
+4. Wait a little: importing status on top of page
+5. Open the solution and **turn on** the flow 
+
+### ⚠️ Note
+When running a GitHub Actions user specific build, synthetic keys (GUID's) will be re-generated. \
+Importing this fresh Solution build again (it'll have the same name), will:
+- **Overwrite the existing Solution**, so you'll see no specific changes in your Solutions list. 
+- **Add the new Flow** (that comes *with* that Solution) with the same name to the My Flows list. \
+It has new GUID's, so it is considered as a new Flow, but with same display name. 
+
+Leaving this untouched, will trigger 
+- existing Flow with the same name (with the old GUID's)
+- new Flow with the same name (with the new GUID's)
+
+In practice, you'll see 2 meeting invites in your Calendar. 
+
+#### 💡 Solution
+Either: 
+- "Turn off" the old Flow if you want to keep them.
+- Delete the old Flow. No worries for losses, you can always re-build a new one. 
