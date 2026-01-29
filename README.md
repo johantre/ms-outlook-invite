@@ -123,6 +123,7 @@ Create / Import your Jira Automation rule by following [JIRA-AUTOMATION.md](./JI
 | [YOURTEMPLATE.md](./YOURTEMPLATE.md)       | Create your own branded template     |
 | [JIRA-AUTOMATION.md](./JIRA-AUTOMATION.md) | Create / import your jira automation |
 | [ARCHITECTURE.md](./ARCHITECTURE.md)       | Technical details for developers     |
+| [POWER-AUTOMATE-IMPORT.md](./POWER-AUTOMATE-IMPORT.md) | Importing in Power Automate          |
 | [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | Common issues and solutions          |
 
 ## 🙋 Support
