@@ -5,7 +5,7 @@ Automatically create Microsoft Outlook calendar invites from emails with JSON pa
 ## 🎯 What Does This Do?
 
 This project provides pre-built **Power Automate Solutions** that automatically:
-1. Monitor a specific Outlook folder for emails with `[AUTO-INVITE]` in the subject
+1. Monitor the Outlook Inbox for emails with `[AUTO-INVITE]` in the subject
 2. Parse JSON data from the email body
 3. Create a calendar invite using a branded HTML template
 4. Place the invite in your Outlook calendar

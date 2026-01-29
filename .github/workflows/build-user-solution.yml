@@ -135,7 +135,19 @@ jobs:
           sed -i "s/$OLD_GUID_UPPER/$NEW_GUID_UPPER/g" "$SOLUTION_DIR/customizations.xml"
           echo "✓ customizations.xml updated"
 
-          # 3. Rename workflow JSON file
+          # 3. Update connection reference to make it unique per user
+          OLD_CONN_REF="jtrbv_sharedoffice365_e66d0"
+          NEW_CONN_REF="jtrbv_sharedoffice365_${USERNAME_SAFE}"
+
+          # In customizations.xml (logical name and display name)
+          sed -i "s/connectionreferencelogicalname=\"$OLD_CONN_REF\"/connectionreferencelogicalname=\"$NEW_CONN_REF\"/g" "$SOLUTION_DIR/customizations.xml"
+          sed -i "s/msoutlookinviteoffice365-e66d0/msoutlookinviteoffice365-${USERNAME_SAFE}/g" "$SOLUTION_DIR/customizations.xml"
+
+          # In workflow JSON (before renaming)
+          sed -i "s/$OLD_CONN_REF/$NEW_CONN_REF/g" "$OLD_WORKFLOW_FILE"
+          echo "✓ Connection reference updated: $NEW_CONN_REF"
+
+          # 4. Rename workflow JSON file
           FLOW_NAME_BASE=$(basename "$OLD_WORKFLOW_FILE" | sed "s/-$OLD_GUID_UPPER\.json//")
           NEW_WORKFLOW_FILE="$SOLUTION_DIR/Workflows/${FLOW_NAME_BASE}-${NEW_GUID_UPPER}.json"
           mv "$OLD_WORKFLOW_FILE" "$NEW_WORKFLOW_FILE"
