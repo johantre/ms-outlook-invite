@@ -11,7 +11,7 @@ Passing a Flow using your connector to anyone is like giving the keys of your re
 
 ### Solution
 So within the platform there is something like a *Solution* you *can* distribute to others. \
-Such Solution contains your flow, but instead of the actual connector, it had connector references, that can be replaced. 
+Such Solution contains your flow, but instead of the actual connector, it had connector references, that can be replaced. \
 At importing time, process allows you to select *your* connector, using your credentials. 
 
 ### Not perfect
