@@ -3,15 +3,16 @@
 How to distribute Automation artifacts
 
 ## 🧩 Elements
-### Flow 
-The elements we have in Power automate are Flows. This is the automation itself. They consist of Triggers and Actions, etc...
-In order to keep automations secure, the platform provides Connectors. E.g. een Outlook 365 connector. \
+The elements we have in Power automate are Flows, Solutions and Connectors.
+### Flows & Connectors 
+This is the automation itself. They consist of Triggers and Actions, etc...
+In order to keep automations secure, the platform provides Connectors, e.g. een Outlook 365 Connector. \
 That connector is specifically for you as a user; it contains your credentials. \
 Passing a Flow using your connector to anyone is like giving the keys of your residential house.  Security = none.
 
-### Solution
+### Solutions & Connectors
 So within the platform there is something like a *Solution* you *can* distribute to others. \
-Such Solution contains your flow, but instead of the actual connector, it had connector references, that can be replaced. \
+Such Solution contains your flow, but instead of the actual Connector, it has Connector references, that can be replaced, and does not contain your credentials. \
 At importing time, process allows you to select *your* connector, using your credentials. 
 
 ### Not perfect
@@ -23,10 +24,10 @@ Passing the same Solution you made to someone else within your organization can 
 The main reason is that the elements of your automation all do have their unique synthetic key (GUID), and importing the same key twice results in a duplicate key error.
 
 ### Tenant, Environment
-Within the Power Automate platform you have the organization, called Tenant your licenses are used.
-Your Tenant can be divided into several Environments. This can be used for splitting up departments, but also OTAP targets. 
+Within the Power Automate platform you have the organization, called "Tenant" where your licenses are being used. \
+Your Tenant can be divided into several "Environments". This can be used for splitting up departments, but also OTAP targets. 
 
-Solutions that require to be per user (like this repo provides) can achieve that by creating an Environment per user, and deploy their Solution as much as they like, without duplicate key errors.
+Solutions that require to be per-user (like this repo provides) can achieve that by creating an Environment per user, and deploy their Solution as much as they like, without duplicate key errors.
 As Environments aren't really meant for that, and would require administrative work, this isn't an option.
 
 ## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Power Platform Catalog 
@@ -51,7 +52,7 @@ However, one needs to be cautious about re-importing it for another user within 
 Naming convention: **Latest \<brand name\> Solution Build**. E.g. "Latest volvo Solution Build" 
 
 ### build-user-solution 
-(Manual build) Overcomes the duplicate key error and strips away the synthetic keys (GUID's) and replaces them by new ones. \
+(Manual build) Overcomes the duplicate key error and strips away the synthetic keys (GUID's) and replaces them by new ones, just like the Power Platform Catalog does. \
 As this build is user specific, it embeds the name of the user to avoid naming collisions. \
 The GH Actions workflow will ask for user name and brand. \
 When importing in a specific user [Power Automate platform](https:\\make.powerautomate.com), the new synthetic keys (GUID's) won't result in duplicate key errors. \
@@ -78,13 +79,13 @@ Importing this fresh Solution build again (it'll have the same name), will:
 - **Add the new Flow** (that comes *with* that Solution) with the same name to the My Flows list. \
 It has new GUID's, so it is considered as a new Flow, but with same display name. 
 
-Leaving this untouched, will trigger 
+Leaving this untouched, the same trigger will exist twice: 
 - existing Flow with the same name (with the old GUID's)
 - new Flow with the same name (with the new GUID's)
 
-In practice, you'll see 2 meeting invites in your Calendar. 
+In practice, those 2 triggers will fire off, and you'll see 2 meeting invites in your Calendar. 
 
 #### 💡 Solution
 Either: 
 - "Turn off" the old Flow if you want to keep them.
-- Delete the old Flow. No worries for losses, you can always re-build a new one. 
+- Delete the old Flow. No worries for losses, you can always re-build a new one and import it again. 
