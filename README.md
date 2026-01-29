@@ -99,8 +99,9 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 ### Step 2: Import Power Automate template
 
-Check [POWER-AUTOMATE-IMPORT.md](./POWER-AUTOMATE-IMPORT.md) for more details in the Power Automate platform. \
-In short:
+Check [POWER-AUTOMATE-IMPORT.md](./POWER-AUTOMATE-IMPORT.md) for more details in the Power Automate platform. 
+
+In short import at user level:
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
 3. Click **Browse** → Select your ZIP file → **Next** → <br>Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
