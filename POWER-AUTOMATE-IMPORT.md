@@ -10,7 +10,7 @@ That connector is specifically for you as a user; it contains your credentials. 
 Passing a Flow using your connector to anyone is like giving the keys of your residential house.  Security = none.
 
 ### Solution
-So within the platform there is something like a *Solution* you *can* distribute to others. \  
+So within the platform there is something like a *Solution* you *can* distribute to others. \
 Such Solution contains your flow, but instead of the actual connector, it had connector references, that can be replaced. 
 At importing time, process allows you to select *your* connector, using your credentials. 
 
@@ -46,9 +46,9 @@ However, users that aren't operating under a Premium license (like Office 365 St
 There are 3 workflows that populate the [Releases page](../../releases). 
 ### smart-build-solution 
 (Automatic build) Auto-detects changes in the repo, and re-builds all brands Solutions, or a specific brand Solution. \
-Naming convention: **Latest \<brand name\> Solution Build**. E.g. "Latest volvo Solution Build" \
 They can be used for importing in the **Power Platform Catalog**, or for importing in a specific user [Power Automate platform](https:\\make.powerautomate.com). \
-However, one needs to be cautious about re-importing it for another user within the same Environment, as it can lead to duplicate key errors.
+However, one needs to be cautious about re-importing it for another user within the same Environment, as it can lead to duplicate key errors. \
+Naming convention: **Latest \<brand name\> Solution Build**. E.g. "Latest volvo Solution Build" 
 
 ### build-user-solution 
 (Manual build) Overcomes the duplicate key error and strips away the synthetic keys (GUID's) and replaces them by new ones. \
