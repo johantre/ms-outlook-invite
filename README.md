@@ -99,11 +99,13 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 ### Step 2: Import Power Automate template
 
+Check [POWER-AUTOMATE-IMPORT.md](./POWER-AUTOMATE-IMPORT.md) for more details in the Power Automate platform. \
+In short:
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
 3. Click **Browse** → Select your ZIP file → **Next** → <br>Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
 4. Wait a little: importing status on top of page 
-5. Open the solution and **turn on** the flow
+5. Open the solution and **turn on** the flow 
 
 📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html)
 

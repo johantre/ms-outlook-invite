@@ -179,7 +179,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: user-${{ steps.validate.outputs.username_safe }}-${{ github.event.inputs.brand }}
-          name: "Solution for ${{ github.event.inputs.username }} (${{ github.event.inputs.brand }})"
+          name: "Latest ${{ github.event.inputs.brand }} Solution build (${{ github.event.inputs.username }})"
           body: |
             ## Power Automate Solution for ${{ github.event.inputs.username }}
 
