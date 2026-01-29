@@ -12,11 +12,11 @@ Passing a Flow using your connector to anyone is like giving the keys of your re
 
 ### Solutions & Connectors
 So within the platform there is something like a *Solution* you *can* distribute to others. \
-Such Solution contains your flow, but instead of the actual Connector, it has Connector references, that can be replaced, and does not contain your credentials. \
-At importing time, process allows you to select *your* connector, using your credentials. 
+Such Solution contains your Flow; but instead of the actual Connector it has the **Connector reference**. This can be replaced, and does not contain your credentials. \
+The Solution import process allows you then to select *your* connector, using your credentials. 
 
 ### Not perfect
-Solutions aren't perfect though. When importing the same solution twice, with the same user, it'll overwrite your flow. \
+Solutions aren't perfect though. When importing the same solution twice, with the same user, it'll overwrite your Flow and Solution. \
 For development situations this is sufficient for tweaking your Flow and re-trying it after import.  
 Your connector stays the same, no worries here. 
 
@@ -24,7 +24,7 @@ Passing the same Solution you made to someone else within your organization can 
 The main reason is that the elements of your automation all do have their unique synthetic key (GUID), and importing the same key twice results in a duplicate key error.
 
 ### Tenant, Environment
-Within the Power Automate platform you have the organization, called "Tenant" where your licenses are being used. \
+Within the Power Automate platform you have the organization called "Tenant" where your licenses are being used. \
 Your Tenant can be divided into several "Environments". This can be used for splitting up departments, but also OTAP targets. 
 
 Solutions that require to be per-user (like this repo provides) can achieve that by creating an Environment per user, and deploy their Solution as much as they like, without duplicate key errors.
@@ -44,7 +44,7 @@ However, users that aren't operating under a Premium license (like Office 365 St
 
 ## <img style="vertical-align: middle" src='assets/images/github.png' width='20' height='20' /> GitHub Actions Workflows
 
-There are 3 workflows that populate the [Releases page](../../releases). 
+There are 3 workflows creating Solutions and populate the [Releases page](../../releases). 
 ### smart-build-solution 
 (Automatic build) Auto-detects changes in the repo, and re-builds all brands Solutions, or a specific brand Solution. \
 They can be used for importing in the **Power Platform Catalog**, or for importing in a specific user [Power Automate platform](https:\\make.powerautomate.com). \
