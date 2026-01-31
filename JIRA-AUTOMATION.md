@@ -4,6 +4,11 @@ This guide explains how to configure the Jira Automation that triggers the MS Ou
 
 ## 📋 Prerequisites
 
+### 👥 Multi-person picker
+This automation requires a multi person picker with the name `Involved People`. \
+Of course, you can name that whatever you want, as long as in the last step, the mail contains all elements present required for the Power Automation to work. \
+Check with your Jira administrator to have this field added. 
+
 ### 👤 Service User (Recommended)
 
 Create a dedicated user account for automation purposes:
@@ -38,7 +43,7 @@ echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
 
 #### 📝 The result format
 
- `c2VydmljZS11c2VyQHlvdXJjb21wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==`
+ `c2VydmljZS11a2VybHlvcXJjb21wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==`
 
 ## 🔧 Automation Rule Setup
 
@@ -59,7 +64,7 @@ echo -n "service-user@yourcompany.com:YOUR-API-TOKEN" | base64
    - Go to "Send web request", change the authorization header from 
      - {{YOUR base64 encoded jira-automation@yourcompany.com:API key}} to your base64 encode key.   
      - The field value should look similar to: \  
-     ```Basic c2VydmljZS11c2VyQHlvdXABD31wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==``` 
+     ```Basic c2VydmljZS11a2VybHlvcXJjb21wYW55LmNvbTpZT1VSLUFQSS1UT0tFTg==``` 
    - Click Update and enable the rule (pill switch next to Update button)
 
 ### ✍️ Create the Rule manually
