@@ -1,91 +1,143 @@
-# <img style="vertical-align: middle" src='assets/images/power-automate.png' width='40' height='40' /> Power Automate import
+# <img style="vertical-align: middle" src='assets/images/power-automate.png' width='40' height='40' /> Power Automate Import
 
-How to distribute Automation artifacts
+How to distribute and import Power Automate Solutions.
 
-## 🧩 Elements
-The elements we have in Power automate are Flows, Solutions and Connectors.
-### Flows & Connectors 
-This is the automation itself. They consist of Triggers and Actions, etc...
-In order to keep automations secure, the platform provides Connectors, e.g. een Outlook 365 Connector. \
-That connector is specifically for you as a user; it contains your credentials. \
-Passing a Flow using your connector to anyone is like giving the keys of your residential house.  Security = none.
+## 🧩 Core Concepts
 
-### Solutions & Connectors
-So within the platform there is something like a *Solution* you *can* distribute to others. \
-Such Solution contains your Flow; but instead of the actual Connector it has the **Connector reference**. This can be replaced, and does not contain your credentials. \
-The Solution import process allows you then to select *your* connector, using your credentials. 
+```mermaid
+flowchart TB
+    subgraph SOLUTION ["📦 Solution (distributable)"]
+        FLOW["⚡ Flow<br/>Triggers & Actions"]
+        CONNREF["🔗 Connector Reference<br/>(placeholder, no credentials)"]
+    end
 
-### Not perfect
-Solutions aren't perfect though. When importing the same solution twice, with the same user, it'll overwrite your Flow and Solution. \
-For development situations this is sufficient for tweaking your Flow and re-trying it after import.  
-Your connector stays the same, no worries here. 
+    subgraph USER ["👤 Your Environment"]
+        CONN["🔑 Your Connector<br/>(your credentials)"]
+    end
 
-Passing the same Solution you made to someone else within your organization can quickly run into import errors. \
-The main reason is that the elements of your automation all do have their unique synthetic key (GUID), and importing the same key twice results in a duplicate key error.
+    FLOW --> CONNREF
+    CONNREF -.->|"import links to"| CONN
 
-### Tenant, Environment
-Within the Power Automate platform you have the organization called "Tenant" where your licenses are being used. \
-Your Tenant can be divided into several "Environments". This can be used for splitting up departments, but also OTAP targets. 
+    style SOLUTION fill:#e8f4fd,stroke:#0078d4
+    style USER fill:#f0fff0,stroke:#28a745
+```
 
-Solutions that require to be per-user (like this repo provides) can achieve that by creating an Environment per user, and deploy their Solution as much as they like, without duplicate key errors.
-As Environments aren't really meant for that, and would require administrative work, this isn't an option.
+| Element | Description | Shareable? |
+|---------|-------------|------------|
+| **Flow** | The automation (triggers, actions) | Via Solution |
+| **Connector** | Your credentials (e.g., Outlook 365) | Never share |
+| **Solution** | Package with Flow + Connector *reference* | Yes |
 
-## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Power Platform Catalog 
-For Premium licenses the Power Automate platform provides an organization-wide store where you can export your solutions to.
-This allows you to distribute your Solution in a professional way: the **Power Platform Catalog** \
-An arbitrary user can go to the Catalog, make his own automation based upon the *template* that was exported earlier. 
+When you import a Solution, you select *your* Connector — credentials stay yours.
 
-At the moment of writing the option of using **Power Platform Catalog** hasn't been tested. \
-Looking at [Releases page](../../releases) you'll see brand specific Solutions pre-build, ready to download. \
-Those are the Solutions you'd want to import into the Power Platform catalog; a sustainable solution for your distribution problem. \
-What the Catalog does when you import from it, it strips all synthetic keys (GUID's) and makes new ones for that user. 
+## ⚠️ The GUID Problem
 
-However, users that aren't operating under a Premium license (like Office 365 Standard) should also be able to enjoy the automation built in this repo. Hence, an answer below to this issue.  
+Every element (Flow, Solution) has a unique identifier (GUID). This causes issues:
+
+| Scenario | Result |
+|----------|--------|
+| Same user imports same Solution twice | Overwrites existing (OK for dev) |
+| Different user imports same Solution | **Duplicate key error** |
+
+```mermaid
+flowchart LR
+    subgraph TENANT ["🏢 Tenant (Organization)"]
+        ENV1["Environment A<br/>User 1's Solution<br/>GUID: abc-123"]
+        ENV2["Environment A<br/>User 2 imports same<br/>GUID: abc-123"]
+    end
+
+    ENV1 -.->|"❌ Conflict!"| ENV2
+
+    style ENV2 fill:#ffcccc,stroke:#cc0000
+```
+
+**Solution**: Generate fresh GUIDs per user — see [GitHub Workflows](#-github-actions-workflows) below.
+
+## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Power Platform Catalog (Premium)
+
+For **Premium licenses**, Microsoft offers the Power Platform Catalog — an organization-wide store that automatically generates fresh GUIDs per user. The Solutions from our [Releases page](../../releases) can be imported there.
+
+> **Note**: Not tested yet. For non-Premium users (Office 365 Standard), use the GitHub workflows below.
 
 ## <img style="vertical-align: middle" src='assets/images/github.png' width='20' height='20' /> GitHub Actions Workflows
 
-There are 3 workflows creating Solutions and populate the [Releases page](../../releases). 
-### smart-build-solution 
-(Automatic build) Auto-detects changes in the repo, and re-builds all brands Solutions, or a specific brand Solution. \
-They can be used for importing in the **Power Platform Catalog**, or for importing in a specific user [Power Automate platform](https:\\make.powerautomate.com). \
-However, one needs to be cautious about re-importing it for another user within the same Environment, as it can lead to duplicate key errors. \
-Naming convention: **Latest \<brand name\> Solution Build**. E.g. "Latest volvo Solution Build" 
+Three workflows populate the [Releases page](../../releases):
 
-### build-user-solution 
-(Manual build) Overcomes the duplicate key error and strips away the synthetic keys (GUID's) and replaces them by new ones, just like the Power Platform Catalog does. \
-As this build is user specific, it embeds the name of the user to avoid naming collisions. \
-The GH Actions workflow will ask for user name and brand. \
-When importing in a specific user [Power Automate platform](https:\\make.powerautomate.com), the new synthetic keys (GUID's) won't result in duplicate key errors. \
-Naming convention: **Latest \<brand name\> Solution Build (user name)**. E.g. "Latest volvo Solution Build (test.user)" 
+```mermaid
+flowchart TD
+    subgraph WORKFLOWS ["🔧 GitHub Workflows"]
+        SMART["🤖 smart-build-solution<br/><i>Automatic on push</i>"]
+        BUILD["🔨 build-solution<br/><i>Manual trigger</i>"]
+        USER["👤 build-user-solution<br/><i>Manual trigger</i>"]
+    end
 
-### build-solution 
-(Manual build) Just like the smart-build-solution, but for a specific brand. \
-The GH Actions workflow will ask for user name and brand. \
-Naming convention: **Latest \<brand name\> Solution Build**. E.g. "Latest volvo Solution Build" 
+    subgraph OUTPUT ["📦 Output"]
+        STANDARD["Standard Solution<br/>Original GUIDs"]
+        USERSOL["User-specific Solution<br/>Fresh GUIDs ✨"]
+    end
 
-## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Importing 
+    SMART --> STANDARD
+    BUILD --> STANDARD
+    USER --> USERSOL
 
-In short import at user level:
+    STANDARD -->|"Same user: OK<br/>Different user: ⚠️ may conflict"| PA1["Power Automate"]
+    USERSOL -->|"Any user: OK ✅"| PA2["Power Automate"]
+
+    style USER fill:#d4edda,stroke:#28a745
+    style USERSOL fill:#d4edda,stroke:#28a745
+```
+
+| Workflow | Trigger | Fresh GUIDs? | Use case |
+|----------|---------|--------------|----------|
+| **smart-build-solution** | Auto (on push) | No | Catalog import, single user |
+| **build-solution** | Manual (brand) | No | Rebuild specific brand |
+| **build-user-solution** | Manual (brand + user) | **Yes** | Multi-user distribution |
+
+**Naming convention**:
+- Standard: `Latest <brand> Solution Build` (e.g., "Latest volvo Solution Build")
+- User-specific: `Latest <brand> Solution Build (<user>)` (e.g., "Latest volvo Solution Build (test.user)") 
+
+## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Importing
+
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
-3. Click **Browse** → Select your ZIP file → **Next** → <br>Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
-4. Wait a little: importing status on top of page
-5. Open the solution and **turn on** the flow 
+3. Click **Browse** → Select your ZIP file → **Next**
+4. Select your connection: **Office 365 Outlook** (not ".com"!) → **Import**
+5. Wait for import to complete (status shows on top)
+6. Open the solution and **turn on** the flow
 
-### ⚠️ Note
-When running a GitHub Actions user specific build, synthetic keys (GUID's) will be re-generated. \
-Importing this fresh Solution build again (it'll have the same name), will:
-- **Overwrite the existing Solution**, so you'll see no specific changes in your Solutions list. 
-- **Add the new Flow** (that comes *with* that Solution) with the same name to the My Flows list. \
-It has new GUID's, so it is considered as a new Flow, but with same display name. 
+📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html)
 
-Leaving this untouched, the same trigger will exist twice: 
-- existing Flow with the same name (with the old GUID's)
-- new Flow with the same name (with the new GUID's)
+---
 
-In practice, those 2 triggers will fire off, and you'll see 2 meeting invites in your Calendar. 
+## ⚠️ Re-importing User-Specific Solutions
 
-#### 💡 Solution
-Either: 
-- "Turn off" the old Flow if you want to keep them.
-- Delete the old Flow. No worries for losses, you can always re-build a new one and import it again. 
+When you import a **user-specific build** (with fresh GUIDs) again:
+
+```mermaid
+flowchart LR
+    subgraph BEFORE ["Before re-import"]
+        SOL1["📦 Solution v1"]
+        FLOW1["⚡ Flow A<br/>GUID: old-123"]
+    end
+
+    subgraph AFTER ["After re-import"]
+        SOL2["📦 Solution v1<br/><i>(overwritten)</i>"]
+        FLOW1B["⚡ Flow A<br/>GUID: old-123<br/>⚠️ Still exists!"]
+        FLOW2["⚡ Flow A<br/>GUID: new-456<br/>✨ New"]
+    end
+
+    SOL1 -->|"re-import"| SOL2
+    FLOW1 -.->|"not deleted"| FLOW1B
+
+    style FLOW1B fill:#fff3cd,stroke:#ffc107
+    style FLOW2 fill:#d4edda,stroke:#28a745
+```
+
+**Result**: Two Flows with the same name → **two calendar invites** per trigger!
+
+### 💡 Fix
+
+After re-importing, go to **My Flows** and either:
+- **Turn off** the old Flow
+- **Delete** the old Flow (you can always rebuild) 

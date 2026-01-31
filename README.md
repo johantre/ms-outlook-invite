@@ -99,16 +99,14 @@ Want to create your own? See [YOURTEMPLATE.md](./YOURTEMPLATE.md).
 
 ### Step 2: Import Power Automate template
 
-Check [POWER-AUTOMATE-IMPORT.md](./POWER-AUTOMATE-IMPORT.md) for more details in the Power Automate platform. 
-
-In short import at user level:
 1. Go to [Power Automate](https://make.powerautomate.com)
 2. Click **Solutions** → **Import solution**
-3. Click **Browse** → Select your ZIP file → **Next** → <br>Select your connection Office 365 Outlook, (**not** Office 365 Outlook **.com**!) → **Import**
-4. Wait a little: importing status on top of page 
-5. Open the solution and **turn on** the flow 
+3. Click **Browse** → Select your ZIP file → **Next**
+4. Select your connection: **Office 365 Outlook** (not ".com"!) → **Import**
+5. Wait for import to complete (status shows on top)
+6. Open the solution and **turn on** the flow
 
-📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html)
+📸 [Screenshots](https://johantre.github.io/ms-outlook-invite/pa.html) | 📖 [Details](./POWER-AUTOMATE-IMPORT.md)
 
 ### Step 3: Configure Jira Automation
 
