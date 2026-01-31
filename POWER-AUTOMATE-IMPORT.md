@@ -5,21 +5,23 @@ How to distribute and import Power Automate Solutions.
 ## 🧩 Core Concepts
 
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph SOLUTION ["📦 Solution (distributable)"]
-        FLOW["⚡ Flow<br/>Triggers & Actions"]
-        CONNREF["🔗 Connector Reference<br/>(placeholder, no credentials)"]
+        subgraph FLOW ["⚡ Flow"]
+            TRIGGER["Trigger<br/><i>🔗 conn ref</i>"]
+            ACTION["Action<br/><i>🔗 conn ref</i>"]
+            TRIGGER --> ACTION
+        end
     end
 
-    subgraph USER ["👤 Your Environment"]
+    SOLUTION -->|"import into<br/>your environment"| RESULT
+
+    subgraph RESULT ["✅ Your Flow"]
         CONN["🔑 Your Connector<br/>(your credentials)"]
     end
 
-    FLOW --> CONNREF
-    CONNREF -.->|"import links to"| CONN
-
     style SOLUTION fill:#e8f4fd,stroke:#0078d4
-    style USER fill:#f0fff0,stroke:#28a745
+    style RESULT fill:#f0fff0,stroke:#28a745
 ```
 
 | Element | Description | Shareable? |
@@ -41,13 +43,12 @@ Every element (Flow, Solution) has a unique identifier (GUID). This causes issue
 
 ```mermaid
 flowchart LR
-    subgraph TENANT ["🏢 Tenant (Organization)"]
-        ENV1["Environment A<br/>User 1's Solution<br/>GUID: abc-123"]
-        ENV2["Environment A<br/>User 2 imports same<br/>GUID: abc-123"]
-    end
+    SOL["📦 Solution<br/>GUID: abc-123"]
 
-    ENV1 -.->|"❌ Conflict!"| ENV2
+    SOL -->|"User 1 imports"| ENV1["✅ Environment<br/>GUID: abc-123"]
+    SOL -->|"User 2 imports"| ENV2["❌ Environment<br/>GUID: abc-123<br/><b>Duplicate!</b>"]
 
+    style ENV1 fill:#d4edda,stroke:#28a745
     style ENV2 fill:#ffcccc,stroke:#cc0000
 ```
 
@@ -55,12 +56,14 @@ flowchart LR
 
 ## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Power Platform Catalog (Premium)
 
-For **Premium licenses**, Microsoft offers the Power Platform Catalog — an organization-wide store that automatically generates fresh GUIDs per user. The Solutions from our [Releases page](../../releases) can be imported there.
+For **Premium licenses**, Microsoft offers the Power Platform Catalog — an organization-wide store that automatically generates fresh GUIDs per user. \
+The Solutions from our [Releases page](../../releases) can be imported there.
 
 > **Note**: Not tested yet. For non-Premium users (Office 365 Standard), use the GitHub workflows below.
 
 ## <img style="vertical-align: middle" src='assets/images/github.png' width='20' height='20' /> GitHub Actions Workflows
 
+For **non-Premium licences**, workflow 👤 build-user-solution is a manual build that does the GUID stripping for you, like Power Platform Catalog does. \
 Three workflows populate the [Releases page](../../releases):
 
 ```mermaid
@@ -100,7 +103,7 @@ flowchart TD
 ## <img style="vertical-align: middle" src='assets/images/power-automate.png' width='20' height='20' /> Importing
 
 1. Go to [Power Automate](https://make.powerautomate.com)
-2. Click **Solutions** → **Import solution**
+2. Click **Solutions** → **Import solution** (downloaded from the [Releases page](../../releases))
 3. Click **Browse** → Select your ZIP file → **Next**
 4. Select your connection: **Office 365 Outlook** (not ".com"!) → **Import**
 5. Wait for import to complete (status shows on top)
