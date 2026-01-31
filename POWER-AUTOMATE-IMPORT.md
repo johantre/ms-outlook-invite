@@ -45,8 +45,8 @@ Every element (Flow, Solution) has a unique identifier (GUID). This causes issue
 flowchart LR
     SOL["📦 Solution<br/>GUID: abc-123"]
 
-    SOL -->|"User 1 imports"| ENV1["✅ Environment<br/>GUID: abc-123"]
-    SOL -->|"User 2 imports"| ENV2["❌ Environment<br/>GUID: abc-123<br/><b>Duplicate!</b>"]
+    SOL -->|"User 1 imports"| ENV1["✅ Environment A<br/>GUID: abc-123"]
+    SOL -->|"User 2 imports"| ENV2["❌ Environment A<br/>GUID: abc-123<br/><b>Duplicate!</b>"]
 
     style ENV1 fill:#d4edda,stroke:#28a745
     style ENV2 fill:#ffcccc,stroke:#cc0000
